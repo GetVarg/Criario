@@ -1,0 +1,102 @@
+/* [project]/componentes/RodapeSite.module.css [app-client] (css) */
+.RodapeSite-module__WV_vJG__rodape {
+  background: #fff;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 4rem clamp(1.25rem, 6.25vw, 7.5rem) 6.5rem;
+  display: grid;
+  position: relative;
+}
+
+.RodapeSite-module__WV_vJG__marca {
+  align-self: center;
+}
+
+.RodapeSite-module__WV_vJG__links {
+  gap: .7rem;
+  font-size: 1rem;
+  display: grid;
+}
+
+.RodapeSite-module__WV_vJG__links a:hover {
+  color: #0ca766;
+}
+
+.RodapeSite-module__WV_vJG__especialistas {
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  display: flex;
+}
+
+.RodapeSite-module__WV_vJG__especialistas a {
+  color: #fff;
+  background: #181818;
+  border-radius: 50%;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  display: grid;
+}
+
+.RodapeSite-module__WV_vJG__copyright {
+  color: #f2f2f2;
+  text-align: center;
+  background: #181818;
+  padding: 1rem;
+  font-size: .7rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (min-width: 1000px) {
+  .RodapeSite-module__WV_vJG__rodape {
+    min-height: 680px;
+    padding-top: 100px;
+    padding-bottom: 154px;
+  }
+
+  .RodapeSite-module__WV_vJG__marca .logotipo-criario {
+    font-size: 54px;
+  }
+
+  .RodapeSite-module__WV_vJG__links {
+    gap: 1rem;
+    font-size: 40.7278px;
+    line-height: 1.2;
+  }
+
+  .RodapeSite-module__WV_vJG__especialistas {
+    gap: 1.5rem;
+    font-size: 45px;
+    line-height: 1.2;
+  }
+
+  .RodapeSite-module__WV_vJG__especialistas a {
+    width: 87px;
+    height: 87px;
+    font-size: 28px;
+  }
+
+  .RodapeSite-module__WV_vJG__copyright {
+    padding: 1rem;
+    font-size: 28px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 680px) {
+  .RodapeSite-module__WV_vJG__rodape {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .RodapeSite-module__WV_vJG__especialistas {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+/*# sourceMappingURL=componentes_RodapeSite_module_css_bad6b30c._.single.css.map*/

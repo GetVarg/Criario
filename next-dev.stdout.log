@@ -1,0 +1,15 @@
+
+> site-rodrigo@0.1.0 dev
+> next dev
+
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.56.1:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.9s
+ GET / 200 in 4.2s (compile: 3.7s, render: 506ms)
+ GET / 200 in 2.4s (compile: 2.0s, render: 448ms)
+ GET / 200 in 260ms (compile: 31ms, render: 229ms)
+ GET / 200 in 114ms (compile: 10ms, render: 103ms)
+[?25h

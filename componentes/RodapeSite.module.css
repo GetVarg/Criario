@@ -1,0 +1,18 @@
+.rodape { display: grid; grid-template-columns: 1fr 1fr 1fr; position: relative; padding: 4rem clamp(1.25rem, 6.25vw, 7.5rem) 6.5rem; background: #fff; }
+.marca { align-self: center; }
+.marca img { display: block; width: min(280px, 100%); height: auto; }
+.links { display: grid; gap: .7rem; font-size: 1rem; }
+.links a:hover { color: #0ca766; }
+.especialistas { display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+.especialistas a { display: block; width: 52px; height: 52px; }
+.especialistas a img { display: block; width: 100%; height: 100%; }
+.copyright { position: absolute; right: 0; bottom: 0; left: 0; padding: 1rem; color: #f2f2f2; background: #181818; text-align: center; font-size: .7rem; }
+@media (min-width: 1000px) {
+  .rodape { min-height: 680px; padding-top: 100px; padding-bottom: 154px; }
+  .marca img { width: 280px; }
+  .links { gap: 1rem; font-size: 40.7278px; line-height: 1.2; }
+  .especialistas { gap: 1.5rem; font-size: 45px; line-height: 1.2; }
+  .especialistas a { width: 87px; height: 87px; }
+  .copyright { padding: 1rem; font-size: 28px; line-height: 1.4; }
+}
+@media (max-width: 680px) { .rodape { grid-template-columns: 1fr; gap: 2.5rem; } .especialistas { align-items: flex-start; text-align: left; } }

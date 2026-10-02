@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/componentes/FaleConosco.module.css"],"sourcesContent":[".faleConosco {\n  display: inline-flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: .65rem;\n  width: max-content;\n  border-bottom: 2px solid #0ca766;\n  padding: .2rem .35rem .4rem;\n  color: #0ca766;\n  font-size: .95rem;\n  line-height: 1.25;\n  white-space: nowrap;\n}\n\n.faleConosco span { flex: none; }\n\n@media (min-width: 1000px) {\n  .faleConosco {\n    font-size: clamp(18px, 1.35vw, 24px);\n  }\n}\n"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;AAcA;;;;AAEA;EACE"}}]
+}

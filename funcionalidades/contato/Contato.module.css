@@ -1,0 +1,46 @@
+.cartao {
+  position: relative;
+  width: 100%;
+  max-width: 1005px;
+  aspect-ratio: 1005 / 849;
+  min-width: 0;
+  padding: clamp(28px, 4.6875vw, 90px);
+  color: #fff;
+  background: linear-gradient(43.53deg, #193525 0%, #69a584 100%);
+}
+.modal { width: min(1005px, calc(100vw - 40px)); max-width: none; max-height: calc(100dvh - 40px); margin: auto; padding: 0; border: 0; background: transparent; color: #fff; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.modal::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.modal::backdrop { background: rgb(0 0 0 / .6); }
+.modal[open] { animation: aparecer 240ms ease-out; }
+.modal:focus { outline: none; }
+.modal .cartao { padding-top: max(64px, 4.6875vw); }
+.cartao:has(.sucesso) { max-width: 420px; padding: 32px; }
+.modal:has(.sucesso) { width: min(420px, calc(100vw - 40px)); }
+.modal .cartao:has(.sucesso) { padding: 64px 32px 32px; }
+.fechar { position: absolute; z-index: 1; top: 12px; right: 12px; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: #fff; font-size: 34px; line-height: 1; cursor: pointer; }
+.fechar:hover { color: #a0efc1; }
+.fechar:focus-visible, .enviar:focus-visible, .alternativa:focus-visible { outline: 2px solid #a0efc1; outline-offset: 5px; }
+.campos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 2vw, 38px) clamp(20px, 3vw, 60px); }
+.formulario label { display: grid; gap: 12px; font-size: clamp(16px, 1.2058vw, 23px); line-height: 1.4; }
+.formulario input, .formulario textarea { width: 100%; min-width: 0; min-height: 44px; padding: 8px 0; border: 0; border-bottom: 1px solid #a8c5b4; border-radius: 0; background: transparent; color: #fff; font: inherit; font-size: 16px; line-height: 1.4; }
+.formulario textarea { min-height: 100px; resize: vertical; }
+.formulario input:focus, .formulario textarea:focus { outline: 0; border-bottom-color: #a0efc1; box-shadow: 0 1px #a0efc1; }
+.formulario input:disabled, .formulario textarea:disabled { opacity: .65; }
+.necessidade { margin-top: clamp(24px, 2vw, 38px); }
+.enviar { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 28px; padding: 12px 0 0; border: 0; border-top: 2px solid #e14300; color: #fff; background: transparent; font-size: clamp(16px, 1.4583vw, 24px); cursor: pointer; }
+.enviar:disabled { opacity: .65; cursor: wait; }
+.erro { margin: 20px 0 0; padding: 12px; border-left: 3px solid #ffd0b7; background: rgb(0 0 0 / .18); font-size: 15px; line-height: 1.5; }
+.alternativa { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.sucesso { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: clamp(260px, 28vw, 480px); padding: 24px 0; text-align: center; }
+.sucesso:focus { outline: none; }
+.sucesso svg { width: 28px; height: 28px; color: #8be3b1; }
+.sucesso p { margin: 12px 0 0; color: #e0ece4; font-size: clamp(16px, 1.3vw, 24px); line-height: 1.35; white-space: pre-line; }
+.sucesso .enviar { margin-top: 32px; border: 0; padding: 4px; font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.armadilha { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+@keyframes aparecer { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 600px) {
+  .campos { grid-template-columns: 1fr; gap: 20px; }
+  .modal { width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
+  .cartao { padding: 28px 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .modal[open] { animation: none; } }

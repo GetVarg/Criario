@@ -1,0 +1,142 @@
+{
+  "marca": "CRIÁRIO",
+  "metadata": {
+    "titulo": "Criário — Innovation the market can see",
+    "descricao": "Criário: integrated strategy, design and marketing to transform businesses."
+  },
+  "comum": {
+    "faleConosco": "get in touch",
+    "saibaMais": "learn more"
+  },
+  "navegacao": {
+    "inicio": "Home",
+    "servicos": "Services",
+    "cases": "Success stories",
+    "contato": "Contact us"
+  },
+  "menu": {
+    "abrir": "Open menu",
+    "fechar": "close",
+    "fecharRotulo": "Close menu",
+    "rotulo": "Main menu",
+    "navegacaoRotulo": "Main navigation",
+    "inicioRotulo": "Go to home",
+    "botao": "menu",
+    "assinatura": "Strategy, design and marketing."
+  },
+  "idiomas": {
+    "rotulo": "Language",
+    "portugues": "Português",
+    "ingles": "English"
+  },
+  "apresentacao": {
+    "titulo": "We exist because every good business has more value than the market can see.",
+    "descricao": "We uncover it, refine it and bring it to the end customer. For those who want to build a competitive advantage the market cannot copy."
+  },
+  "servicos": {
+    "titulo": "What we do.",
+    "descricao": "We analyze your business, build the experience and become your growth partners. Integrated strategy, design and marketing, keeping the big picture in focus.",
+    "itens": {
+      "visao": {
+        "titulo": "An outside perspective. For those who know they need to innovate, but don't know how.",
+        "descricao": "You have a good product or service. You invest in marketing, care about quality and believe in what you sell. Yet something still tells you your product could be more innovative and gain a real competitive advantage."
+      },
+      "experiencia": {
+        "titulo": "Build the experience you've always wanted to deliver.",
+        "descricao": "A product your customer wants to hold, an identity that makes your business memorable, a service that communicates what you believe in."
+      },
+      "mercado": {
+        "titulo": "Bring what you've built to the people who will love it.",
+        "descricao": "You've built something real. Now it's time to bring that experience transformation to life, with strategy and purpose. For those who want to launch with confidence, not guesswork."
+      },
+      "crescimento": {
+        "titulo": "A growth partnership. Increasing the value of your business.",
+        "descricao": "A business experience doesn't end on launch day. The market changes, new opportunities arise and decisions come up that weren't in the plan."
+      }
+    }
+  },
+  "cases": {
+    "titulo": "Building results with our clients.",
+    "descricao": "Long sales cycles, products that don't convert, an image that fails to reflect the quality of your work. A human-centered approach to real projects and real problems.",
+    "itens": {
+      "onboard": {
+        "cliente": "Onboard",
+        "contexto": "The future of ticketing",
+        "resumo": "How ONBOARD came to look as advanced as its own technology. A digital ticketing startup ranked among the top 100 companies in urban mobility.",
+        "imagemAlt": "Project developed for Onboard"
+      },
+      "newEra": {
+        "cliente": "New Era",
+        "contexto": "A new way to sell",
+        "resumo": "How New Era franchises started selling wherever their customers are. 12 franchises and a global apparel brand with a century of authentic sporting heritage.",
+        "imagemAlt": "Project developed for New Era"
+      },
+      "pitec": {
+        "cliente": "Pitec",
+        "contexto": "Every detail matters",
+        "resumo": "How Criário redesigned PITEC's scientific detector within tight constraints. A leading Brazilian photonics company offering X-ray detectors for scientific applications.",
+        "imagemAlt": "Project developed for Pitec"
+      }
+    }
+  },
+  "depoimentos": {
+    "titulo": "Those who have worked with Criário.",
+    "descricao": "Companies that recognized the gap between the value they delivered and the value the market perceived, and decided to do something about it.",
+    "itens": {
+      "paulo": {
+        "nome": "Paulo Bertolo",
+        "cargo": "Operations Director, Pitec",
+        "citacao": "I always felt we needed a more user-focused perspective. Our product was less presentable and marketable than it could have been. At Criário, I found a combination of quality work and flexibility, and that means a lot to me.",
+        "imagemAlt": "Portrait of Paulo Bertolo"
+      },
+      "luiz": {
+        "nome": "Luiz Renato",
+        "cargo": "CEO, Onboard",
+        "citacao": "We hired Criário to design the DBD (Digital Ticketing Device), and the result was incredible. Their work completely transformed the product. Beyond the quality, we were also very pleased with their professionalism. Rodrigo was always very helpful and delivered on time. We couldn't be happier.",
+        "imagemAlt": "Portrait of Luiz Renato"
+      },
+      "igor": {
+        "nome": "Igor Pinheiro",
+        "cargo": "Business Development, Idea",
+        "citacao": "We had urgent needs and were looking for a partner we could trust. Criário not only provided excellent service but also guided us and delivered outstanding work. We decided to strengthen our long-term partnership.",
+        "imagemAlt": "Portrait of Igor Pinheiro"
+      }
+    }
+  },
+  "clientes": {
+    "rotulo": "Criário clients",
+    "imagemAlt": "Logos of Criário clients"
+  },
+  "manifesto": {
+    "antes": "For those who believe some problems call for ",
+    "destaque": "genuine invention",
+    "depois": " rather than applying ready-made models."
+  },
+  "contato": {
+    "titulo": "Contact us",
+    "fechar": "Close contact form",
+    "formulario": {
+      "nome": "Your name",
+      "empresa": "Company",
+      "email": "Email",
+      "telefone": "Phone",
+      "cargo": "Job title",
+      "origem": "How did you hear about us?",
+      "necessidade": "What do you need?",
+      "enviar": "send message",
+      "enviando": "sending message…",
+      "sucesso": "message sent,\nwe'll get back to you soon.",
+      "novaMensagem": "send another message",
+      "erro": "We couldn't send your message. Please try again or contact us by email.",
+      "tempoEsgotado": "Sending took longer than expected and we couldn't confirm receipt. You can try again or contact us by email.",
+      "invalido": "Please enter your name, email and message before sending.",
+      "alternativa": "send by email",
+      "assunto": "New inquiry from the Criário website"
+    }
+  },
+  "rodape": {
+    "especialistas": "Talk to our specialists",
+    "especialistasRotulo": "Talk to our specialists",
+    "copyright": "Criário. All rights reserved."
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "marca": "CRIÁRIO",
+  "metadata": {
+    "titulo": "Criário — Inovação que o mercado consegue ver",
+    "descricao": "Criário: estratégia, design e marketing integrados para transformar negócios."
+  },
+  "comum": {
+    "faleConosco": "fale conosco",
+    "saibaMais": "saiba mais"
+  },
+  "navegacao": {
+    "inicio": "Home",
+    "servicos": "Serviços",
+    "cases": "Cases de sucesso",
+    "contato": "Fale conosco"
+  },
+  "menu": {
+    "abrir": "Abrir menu",
+    "fechar": "fechar",
+    "fecharRotulo": "Fechar menu",
+    "rotulo": "Menu principal",
+    "navegacaoRotulo": "Navegação principal",
+    "inicioRotulo": "Ir para o início",
+    "botao": "menu",
+    "assinatura": "Estratégia, design e marketing."
+  },
+  "idiomas": {
+    "rotulo": "Idioma",
+    "portugues": "Português",
+    "ingles": "English"
+  },
+  "apresentacao": {
+    "titulo": "Existimos porque toda empresa boa tem mais valor do que o mercado consegue ver.",
+    "descricao": "Nós o encontramos, refinamos e conduzimos até o consumidor final. Para quem quer construir uma vantagem competitiva que o mercado não consegue copiar."
+  },
+  "servicos": {
+    "titulo": "O que fazemos.",
+    "descricao": "Analisamos seu negócio, construímos a experiência e nos tornamos parceiros de crescimento. Estratégia, design e marketing integrados, sem terceirizar a visão de conjunto.",
+    "itens": {
+      "visao": {
+        "titulo": "Uma visão de fora. Para quem sabe que precisa inovar, mas não sabe como.",
+        "descricao": "Você tem um produto ou serviço bom. Investe em marketing, cuida da qualidade e acredita no que vende. Mas, algo ainda te diz que seu produto poderia ser mais inovador e ganhar vantagem competitiva real."
+      },
+      "experiencia": {
+        "titulo": "Construa a experiência que você sempre quis entregar.",
+        "descricao": "Um produto que o cliente quer segurar nas mãos, uma identidade que faz seu negócio ser lembrado, um serviço que transmite o que você acredita."
+      },
+      "mercado": {
+        "titulo": "Leve o que você construiu para quem vai amá-lo.",
+        "descricao": "Você construiu algo real. Agora precisa colocar essa transformação de experiência em movimento, com estratégia e intenção. Para quem quer lançar com confiança, não com achismo."
+      },
+      "crescimento": {
+        "titulo": "Parceria de Crescimento. Aumentando o valor da sua empresa.",
+        "descricao": "A experiência de um negócio não termina no dia do lançamento. O mercado muda, surgem novas oportunidades, aparecem decisões que não estavam no plano."
+      }
+    }
+  },
+  "cases": {
+    "titulo": "Construindo resultados com nossos clientes.",
+    "descricao": "Ciclo de vendas longo, produto que não converte, imagem que não reflete a qualidade de entrega. Visão centrada no ser humano para projetos reais e problemas reais.",
+    "itens": {
+      "onboard": {
+        "cliente": "Onboard",
+        "contexto": "O futuro da bilhetagem",
+        "resumo": "Como a ONBOARD passou a se mostrar à altura da própria tecnologia. Startup criadora da bilhetagem digital e top 100 do setor de mobilidade urbana.",
+        "imagemAlt": "Projeto desenvolvido para Onboard"
+      },
+      "newEra": {
+        "cliente": "New Era",
+        "contexto": "O novo vendedor",
+        "resumo": "Como as franquias New Era passaram a vender onde o cliente está. 12 franquias e uma marca global de vestuário com uma herança esportiva autêntica há 100 anos.",
+        "imagemAlt": "Projeto desenvolvido para New Era"
+      },
+      "pitec": {
+        "cliente": "Pitec",
+        "contexto": "Cada detalhe conta",
+        "resumo": "Como a Criário redesenhou o detector científico da PITEC dentro de restrições rígidas. A grande nacional da área de fotônica, oferece detectores de raio-x para aplicações científicas.",
+        "imagemAlt": "Projeto desenvolvido para Pitec"
+      }
+    }
+  },
+  "depoimentos": {
+    "titulo": "Quem já trabalhou com a Criário.",
+    "descricao": "Empresas que reconheceram o gap entre o valor que entregavam e o que o mercado percebia, e decidiram fazer algo a respeito.",
+    "itens": {
+      "paulo": {
+        "nome": "Paulo Bertolo",
+        "cargo": "Diretor de Operações, Pitec",
+        "citacao": "Sempre senti falta de um olhar mais focado no usuário, nosso produto era menos apresentável e vendável do que poderia. Na Criário encontrei a junção de qualidade no trabalho e flexibilidade, e isso tem muito valor para mim.",
+        "imagemAlt": "Retrato de Paulo Bertolo"
+      },
+      "luiz": {
+        "nome": "Luiz Renato",
+        "cargo": "CEO, Onboard",
+        "citacao": "Contratamos a Criário para projetar o design do DBD (Dispositivo de Bilhetagem Digital) e o resultado foi incrível. O produto saiu completamente transformado depois do trabalho deles. Além da qualidade, seu profissionalismo também foi algo que nos agradou muito. Rodrigo foi sempre muito solícito e pontual com as entregas, não poderíamos estar mais satisfeitos.",
+        "imagemAlt": "Retrato de Luiz Renato"
+      },
+      "igor": {
+        "nome": "Igor Pinheiro",
+        "cargo": "Business Development, Idea",
+        "citacao": "Estávamos com necessidades urgentes e precisávamos de um parceiro de confiança. Além de nos atender muito bem a Criário nos orientou e entregou o trabalho com excelência. Decidimos fortalecer a parceria de longo prazo.",
+        "imagemAlt": "Retrato de Igor Pinheiro"
+      }
+    }
+  },
+  "clientes": {
+    "rotulo": "Clientes da Criário",
+    "imagemAlt": "Logotipos de clientes da Criário"
+  },
+  "manifesto": {
+    "antes": "Para você que acredita que alguns problemas exigem ",
+    "destaque": "invenção genuína",
+    "depois": " em vez da aplicação de modelos pré-estabelecidos."
+  },
+  "contato": {
+    "titulo": "Fale conosco",
+    "fechar": "Fechar formulário de contato",
+    "formulario": {
+      "nome": "Seu nome",
+      "empresa": "Empresa",
+      "email": "E-mail",
+      "telefone": "Telefone",
+      "cargo": "Cargo",
+      "origem": "Como nos conheceu?",
+      "necessidade": "Quais são suas necessidades?",
+      "enviar": "enviar mensagem",
+      "enviando": "enviando mensagem…",
+      "sucesso": "mensagem enviada,\nem breve retornaremos.",
+      "novaMensagem": "enviar outra mensagem",
+      "erro": "Não foi possível enviar a mensagem. Tente novamente ou fale conosco por e-mail.",
+      "tempoEsgotado": "O envio demorou mais que o esperado e não foi possível confirmar o recebimento. Você pode tentar novamente ou falar conosco por e-mail.",
+      "invalido": "Preencha seu nome, e-mail e mensagem antes de enviar.",
+      "alternativa": "enviar por e-mail",
+      "assunto": "Novo contato pelo site Criário"
+    }
+  },
+  "rodape": {
+    "especialistas": "Fale com nossos especialistas",
+    "especialistasRotulo": "Falar com nossos especialistas",
+    "copyright": "Criário. Todos os direitos reservados."
+  }
+}

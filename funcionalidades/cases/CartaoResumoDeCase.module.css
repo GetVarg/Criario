@@ -1,0 +1,30 @@
+.cartao { display: grid; grid-template-rows: auto 1fr; background: #fff; }
+.cartao:focus-visible { outline: 2px solid #19704b; outline-offset: -2px; }
+.cartao .texto { position: relative; align-self: stretch; isolation: isolate; }
+.texto::before { position: absolute; inset: 0; z-index: -1; content: ''; background: #181818; opacity: 0; transition: opacity 280ms ease; }
+.cabecalho { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.cabecalho > div { min-width: 0; }
+.cartao .mais { display: grid; place-items: center; flex: 0 0 auto; width: clamp(40px, 3.39vw, 65px); height: clamp(40px, 3.39vw, 65px); border: 2px solid #eee; border-radius: 50%; color: #fff; background: #aeaeae; font-family: Arial, sans-serif; font-size: clamp(28px, 2.28vw, 44px); line-height: 1; transition: background-color 280ms ease, border-color 280ms ease; }
+.cartao .contexto { color: #19704b; }
+.texto h3, .texto p, .contexto { transition: color 280ms ease; }
+.cartao:focus-within .texto::before { opacity: 1; }
+.cartao:focus-within .texto h3 { color: #fff; }
+.cartao:focus-within .texto p { color: #cecece; }
+.cartao:focus-within .contexto { color: #8dd5a7; }
+.cartao:focus-within .mais { background: #333; border-color: #424242; }
+
+@media (hover: hover) {
+  .cartao:hover .texto::before { opacity: 1; }
+  .cartao:hover .texto h3 { color: #fff; }
+  .cartao:hover .texto p { color: #cecece; }
+  .cartao:hover .contexto { color: #8dd5a7; }
+  .cartao:hover .mais { background: #333; border-color: #424242; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .texto::before, .texto h3, .texto p, .contexto, .cartao .mais { transition: none; }
+}
+
+@media (min-width: 681px) and (max-width: 999px) {
+  .cartao { grid-template-rows: 1fr; }
+}

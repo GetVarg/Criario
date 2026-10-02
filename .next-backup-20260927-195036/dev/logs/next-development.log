@@ -1,0 +1,372 @@
+[00:00:49.241] Server  LOG      ✓ Ready in 35.8s
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.301] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:49.302] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[00:00:52.655] Server  LOG      ○ Compiling / ...
+[00:01:07.499] Server  ERROR   Each child in a list should have a unique "key" prop. See https://react.dev/link/warning-keys for more information.
+[00:01:09.358] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:56.802] Server  LOG      ✓ Compiled in 590ms
+[00:02:01.080] Server  LOG      ✓ Compiled in 427ms
+[00:02:03.777] Server  LOG      ✓ Compiled in 98ms
+[00:02:09.777] Server  LOG      ✓ Compiled in 186ms
+[00:02:12.497] Server  LOG      ✓ Compiled in 230ms
+[00:02:14.225] Browser ERROR   uncaughtError: TypeError: Cannot read properties of undefined (reading 'menu')
+[00:02:14.275] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:02:18.331] Server  LOG      ✓ Compiled in 759ms
+[00:02:21.812] Server  LOG      ✓ Compiled in 345ms
+[00:02:27.716] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:51.466] Server  LOG      ✓ Compiled in 423ms
+[00:03:58.874] Server  LOG      ✓ Compiled in 164ms
+[00:04:02.207] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.233] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.304] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.337] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.356] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.374] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.400] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.422] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.439] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.452] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.468] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:02.484] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:05.688] Server  LOG      ○ Compiling /en ...
+[00:04:14.420] Server  ERROR    ⨯ ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/en/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:04:15.161] Browser ERROR   ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:04:15.161] Browser ERROR   ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+[00:04:20.244] Server  LOG      ○ Compiling /_error ...
+[00:04:31.493] Server  LOG      ✓ Compiled in 17s
+[00:04:38.469] Browser ERROR   uncaughtError: Error: ./funcionalidades/cases/CartaoResumoDeCase.tsx:2:1
+Module not found: Can't resolve './CartaoResumoDeCase.module.css'
+  1 | import type { Case } from '../../dados/cases'
+> 2 | import styles from './CartaoResumoDeCase.module.css'
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | type Props = Case
+  5 |
+
+
+
+Import trace:
+  Server Component:
+    ./funcionalidades/cases/CartaoResumoDeCase.tsx
+    ./funcionalidades/pagina-inicial/PaginaInicial.tsx
+    ./app/(portugues)/page.tsx
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[00:08:05.846] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:42.812] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:35.642] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:46.998] Server  LOG      ✓ Compiled in 473ms
+[00:20:49.318] Server  LOG      ✓ Compiled in 504ms
+[00:20:51.740] Server  LOG      ✓ Compiled in 610ms
+[00:20:56.111] Server  LOG      ✓ Compiled in 157ms
+[00:20:58.585] Server  LOG      ✓ Compiled in 154ms
+[00:21:00.926] Server  LOG      ✓ Compiled in 165ms
+[00:21:03.361] Server  LOG      ✓ Compiled in 172ms
+[00:21:05.859] Server  LOG      ✓ Compiled in 73ms
+[00:21:08.101] Server  LOG      ✓ Compiled in 74ms
+[00:23:18.963] Server  LOG      ✓ Compiled in 886ms
+[00:23:21.240] Server  LOG      ✓ Compiled in 44ms
+[00:27:46.953] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[45:30:49.420] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[45:40:40.875] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[45:41:15.843] Server  LOG      ✓ Compiled in 348ms
+[45:52:15.599] Server  LOG      ✓ Compiled in 1459ms
+[45:52:25.278] Server  LOG      ✓ Compiled in 9.6s
+[45:52:34.514] Server  LOG      ✓ Compiled in 6.4s
+[45:53:44.759] Server  LOG      ✓ Compiled in 348ms
+[45:53:48.076] Server  LOG      ✓ Compiled in 549ms
+[45:56:19.506] Server  LOG      ✓ Compiled in 262ms
+[45:59:38.382] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

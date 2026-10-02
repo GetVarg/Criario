@@ -1,0 +1,49 @@
+.faixa {
+  --altura-faixa: 158px;
+  display: grid;
+  min-height: var(--altura-faixa);
+  align-items: center;
+  background: #181818;
+}
+
+.mascara {
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8% 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8% 92%, transparent);
+}
+
+.trilho {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: percorrer 42s linear infinite;
+}
+
+.grupo {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 4.4vw, 4.5rem);
+  padding-right: clamp(2rem, 4.4vw, 4.5rem);
+}
+
+.grupo img {
+  display: block;
+  flex: none;
+  width: clamp(170px, 16vw, 245px);
+  height: 100px;
+  object-fit: contain;
+}
+
+@keyframes percorrer {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trilho { animation-play-state: paused; }
+}
+
+@media (max-width: 680px) {
+  .faixa { --altura-faixa: 132px; }
+  .grupo img { width: 155px; height: 82px; }
+}
