@@ -1,0 +1,26 @@
+/* [project]/componentes/FaleConosco.module.css [app-client] (css) */
+.FaleConosco-module__ZByEpq__faleConosco {
+  color: #0ca766;
+  white-space: nowrap;
+  border-bottom: 2px solid #0ca766;
+  justify-content: space-between;
+  align-items: center;
+  gap: .65rem;
+  width: max-content;
+  padding: .2rem .35rem .4rem;
+  font-size: .95rem;
+  line-height: 1.25;
+  display: inline-flex;
+}
+
+.FaleConosco-module__ZByEpq__faleConosco span {
+  flex: none;
+}
+
+@media (min-width: 1000px) {
+  .FaleConosco-module__ZByEpq__faleConosco {
+    font-size: clamp(18px, 1.35vw, 24px);
+  }
+}
+
+/*# sourceMappingURL=componentes_FaleConosco_module_css_bad6b30c._.single.css.map*/

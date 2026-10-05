@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/pedro/OneDrive/%C3%81rea%20de%20Trabalho/rodrigado_criario/app/globals.css"],"sourcesContent":["* {\n  box-sizing: border-box;\n}\n\nhtml,\nbody {\n  min-height: 100%;\n  margin: 0;\n  background: #ffffff;\n}\n\nhtml {\n  scroll-behavior: smooth;\n}\n\nbody {\n  color: #181818;\n  font-family: 'DM Sans', Arial, sans-serif;\n  -webkit-font-smoothing: antialiased;\n}\n\na {\n  color: inherit;\n  text-decoration: none;\n}\n\nbutton,\ninput,\ntextarea,\nselect {\n  font: inherit;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  html { scroll-behavior: auto; }\n}\r\n"],"names":[],"mappings":"AAAA;;;;AAIA;;;;;;AAOA;;;;AAIA;;;;;;AAMA;;;;;AAKA;;;;AAOA;EACE","debugId":null}}]
+}

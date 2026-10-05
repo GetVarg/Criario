@@ -1,0 +1,120 @@
+/* [project]/funcionalidades/cases/CartaoResumoDeCase.module.css [app-client] (css) */
+.CartaoResumoDeCase-module__QeOCEG__cartao {
+  background: #fff;
+  grid-template-rows: auto 1fr;
+  display: grid;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao:focus-visible {
+  outline-offset: -2px;
+  outline: 2px solid #19704b;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao .CartaoResumoDeCase-module__QeOCEG__texto {
+  isolation: isolate;
+  align-self: stretch;
+  position: relative;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__texto:before {
+  z-index: -1;
+  content: "";
+  opacity: 0;
+  background: #181818;
+  transition: opacity .28s;
+  position: absolute;
+  inset: 0;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cabecalho {
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  display: flex;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cabecalho > div {
+  min-width: 0;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao .CartaoResumoDeCase-module__QeOCEG__mais {
+  color: #fff;
+  background: #aeaeae;
+  border: 2px solid #eee;
+  border-radius: 50%;
+  flex: none;
+  place-items: center;
+  width: clamp(40px, 3.39vw, 65px);
+  height: clamp(40px, 3.39vw, 65px);
+  font-family: Arial, sans-serif;
+  font-size: clamp(28px, 2.28vw, 44px);
+  line-height: 1;
+  transition: background-color .28s, border-color .28s;
+  display: grid;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao .CartaoResumoDeCase-module__QeOCEG__contexto {
+  color: #19704b;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__texto h3, .CartaoResumoDeCase-module__QeOCEG__texto p, .CartaoResumoDeCase-module__QeOCEG__contexto {
+  transition: color .28s;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao:focus-within .CartaoResumoDeCase-module__QeOCEG__texto:before {
+  opacity: 1;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao:focus-within .CartaoResumoDeCase-module__QeOCEG__texto h3 {
+  color: #fff;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao:focus-within .CartaoResumoDeCase-module__QeOCEG__texto p {
+  color: #cecece;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao:focus-within .CartaoResumoDeCase-module__QeOCEG__contexto {
+  color: #8dd5a7;
+}
+
+.CartaoResumoDeCase-module__QeOCEG__cartao:focus-within .CartaoResumoDeCase-module__QeOCEG__mais {
+  background: #333;
+  border-color: #424242;
+}
+
+@media (hover: hover) {
+  .CartaoResumoDeCase-module__QeOCEG__cartao:hover .CartaoResumoDeCase-module__QeOCEG__texto:before {
+    opacity: 1;
+  }
+
+  .CartaoResumoDeCase-module__QeOCEG__cartao:hover .CartaoResumoDeCase-module__QeOCEG__texto h3 {
+    color: #fff;
+  }
+
+  .CartaoResumoDeCase-module__QeOCEG__cartao:hover .CartaoResumoDeCase-module__QeOCEG__texto p {
+    color: #cecece;
+  }
+
+  .CartaoResumoDeCase-module__QeOCEG__cartao:hover .CartaoResumoDeCase-module__QeOCEG__contexto {
+    color: #8dd5a7;
+  }
+
+  .CartaoResumoDeCase-module__QeOCEG__cartao:hover .CartaoResumoDeCase-module__QeOCEG__mais {
+    background: #333;
+    border-color: #424242;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .CartaoResumoDeCase-module__QeOCEG__texto:before, .CartaoResumoDeCase-module__QeOCEG__texto h3, .CartaoResumoDeCase-module__QeOCEG__texto p, .CartaoResumoDeCase-module__QeOCEG__contexto, .CartaoResumoDeCase-module__QeOCEG__cartao .CartaoResumoDeCase-module__QeOCEG__mais {
+    transition: none;
+  }
+}
+
+@media (min-width: 681px) and (max-width: 999px) {
+  .CartaoResumoDeCase-module__QeOCEG__cartao {
+    grid-template-rows: 1fr;
+  }
+}
+
+/*# sourceMappingURL=funcionalidades_cases_CartaoResumoDeCase_module_css_bad6b30c._.single.css.map*/

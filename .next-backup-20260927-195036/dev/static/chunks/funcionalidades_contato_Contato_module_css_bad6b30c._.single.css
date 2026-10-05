@@ -1,0 +1,250 @@
+/* [project]/funcionalidades/contato/Contato.module.css [app-client] (css) */
+.Contato-module__MkxF-q__cartao {
+  aspect-ratio: 1005 / 849;
+  color: #fff;
+  background: linear-gradient(43.53deg, #193525 0%, #69a584 100%);
+  width: 100%;
+  min-width: 0;
+  max-width: 1005px;
+  padding: clamp(28px, 4.6875vw, 90px);
+  position: relative;
+}
+
+.Contato-module__MkxF-q__modal {
+  color: #fff;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  background: none;
+  border: 0;
+  width: min(1005px, 100vw - 40px);
+  max-width: none;
+  max-height: calc(100dvh - 40px);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+}
+
+.Contato-module__MkxF-q__modal::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.Contato-module__MkxF-q__modal::backdrop {
+  background: #0009;
+}
+
+.Contato-module__MkxF-q__modal[open] {
+  animation: .24s ease-out Contato-module__MkxF-q__aparecer;
+}
+
+.Contato-module__MkxF-q__modal:focus {
+  outline: none;
+}
+
+.Contato-module__MkxF-q__modal .Contato-module__MkxF-q__cartao {
+  padding-top: max(64px, 4.6875vw);
+}
+
+.Contato-module__MkxF-q__cartao:has(.Contato-module__MkxF-q__sucesso) {
+  max-width: 420px;
+  padding: 32px;
+}
+
+.Contato-module__MkxF-q__modal:has(.Contato-module__MkxF-q__sucesso) {
+  width: min(420px, 100vw - 40px);
+}
+
+.Contato-module__MkxF-q__modal .Contato-module__MkxF-q__cartao:has(.Contato-module__MkxF-q__sucesso) {
+  padding: 64px 32px 32px;
+}
+
+.Contato-module__MkxF-q__fechar {
+  z-index: 1;
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  font-size: 34px;
+  line-height: 1;
+  display: grid;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.Contato-module__MkxF-q__fechar:hover {
+  color: #a0efc1;
+}
+
+.Contato-module__MkxF-q__fechar:focus-visible, .Contato-module__MkxF-q__enviar:focus-visible, .Contato-module__MkxF-q__alternativa:focus-visible {
+  outline-offset: 5px;
+  outline: 2px solid #a0efc1;
+}
+
+.Contato-module__MkxF-q__campos {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2vw, 38px) clamp(20px, 3vw, 60px);
+  display: grid;
+}
+
+.Contato-module__MkxF-q__formulario label {
+  gap: 12px;
+  font-size: clamp(16px, 1.2058vw, 23px);
+  line-height: 1.4;
+  display: grid;
+}
+
+.Contato-module__MkxF-q__formulario input, .Contato-module__MkxF-q__formulario textarea {
+  color: #fff;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  font: inherit;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #a8c5b4;
+  border-radius: 0;
+  padding: 8px 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.Contato-module__MkxF-q__formulario textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.Contato-module__MkxF-q__formulario input:focus, .Contato-module__MkxF-q__formulario textarea:focus {
+  border-bottom-color: #a0efc1;
+  outline: 0;
+  box-shadow: 0 1px #a0efc1;
+}
+
+.Contato-module__MkxF-q__formulario input:disabled, .Contato-module__MkxF-q__formulario textarea:disabled {
+  opacity: .65;
+}
+
+.Contato-module__MkxF-q__necessidade {
+  margin-top: clamp(24px, 2vw, 38px);
+}
+
+.Contato-module__MkxF-q__enviar {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-top: 2px solid #e14300;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 28px;
+  padding: 12px 0 0;
+  font-size: clamp(16px, 1.4583vw, 24px);
+  display: inline-flex;
+}
+
+.Contato-module__MkxF-q__enviar:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.Contato-module__MkxF-q__erro {
+  background: #0000002e;
+  border-left: 3px solid #ffd0b7;
+  margin: 20px 0 0;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.Contato-module__MkxF-q__alternativa {
+  color: inherit;
+  text-underline-offset: 3px;
+  text-decoration: underline;
+}
+
+.Contato-module__MkxF-q__sucesso {
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: clamp(260px, 28vw, 480px);
+  padding: 24px 0;
+  display: flex;
+}
+
+.Contato-module__MkxF-q__sucesso:focus {
+  outline: none;
+}
+
+.Contato-module__MkxF-q__sucesso svg {
+  color: #8be3b1;
+  width: 28px;
+  height: 28px;
+}
+
+.Contato-module__MkxF-q__sucesso p {
+  color: #e0ece4;
+  white-space: pre-line;
+  margin: 12px 0 0;
+  font-size: clamp(16px, 1.3vw, 24px);
+  line-height: 1.35;
+}
+
+.Contato-module__MkxF-q__sucesso .Contato-module__MkxF-q__enviar {
+  text-underline-offset: 4px;
+  border: 0;
+  margin-top: 32px;
+  padding: 4px;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.Contato-module__MkxF-q__armadilha {
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+@keyframes Contato-module__MkxF-q__aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .Contato-module__MkxF-q__campos {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .Contato-module__MkxF-q__modal {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - 24px);
+  }
+
+  .Contato-module__MkxF-q__cartao {
+    padding: 28px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .Contato-module__MkxF-q__modal[open] {
+    animation: none;
+  }
+}
+
+/*# sourceMappingURL=funcionalidades_contato_Contato_module_css_bad6b30c._.single.css.map*/
