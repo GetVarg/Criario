@@ -2,6 +2,7 @@
   "name": "site-rodrigo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://criario.com",
   "main": "scripts/iniciar-servidor.mjs",
   "engines": {
     "node": ">=20.9.0"
@@ -9,6 +10,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d out -r https://github.com/GetVarg/Criario.git",
     "start": "node scripts/iniciar-servidor.mjs",
     "lint": "eslint ."
   },
@@ -24,6 +27,7 @@
     "@types/react-dom": "19.0.2",
     "eslint": "9.18.0",
     "eslint-config-next": "16.0.1",
+    "gh-pages": "^6.3.0",
     "typescript": "5.7.2"
   }
 }
