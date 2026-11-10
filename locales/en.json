@@ -56,6 +56,7 @@
     }
   },
   "cases": {
+    "verTodos": "view all cases",
     "titulo": "Building results with our clients.",
     "descricao": "Long sales cycles, products that don't convert, an image that fails to reflect the quality of your work. A human-centered approach to real projects and real problems.",
     "itens": {
@@ -76,6 +77,12 @@
         "contexto": "Every detail matters",
         "resumo": "How Criário redesigned PITEC's scientific detector within tight constraints. A leading Brazilian photonics company offering X-ray detectors for scientific applications.",
         "imagemAlt": "Project developed for Pitec"
+      },
+      "lumi": {
+        "cliente": "Lumi",
+        "contexto": "Medicine and aesthetics",
+        "resumo": "Rethinking a medical device that bridges hospital care and aesthetics.",
+        "imagemAlt": "Lumi medical device against a white background"
       }
     }
   },
@@ -147,5 +154,32 @@
     "especialistas": "Talk to our specialists",
     "especialistasRotulo": "Talk to our specialists",
     "copyright": "Criário. All rights reserved."
+  },
+  "paginaCases": {
+    "metadata": {
+      "titulo": "Success stories — Criário",
+      "descricao": "Explore Criário’s strategy, design and marketing projects for Onboard, New Era, Lumi and Pitec."
+    },
+    "heroAlt": "Blue packaging for the BitDogLab technology kit",
+    "titulo": "Businesses that found what they needed to grow.",
+    "descricao": "We analyze your business, build the experience and become growth partners for those who want to innovate, sell better and create a competitive advantage the market cannot copy.",
+    "itens": {
+      "onboard": {
+        "titulo": "ONBOARD’s image catches up with its technology.",
+        "resumo": "On the inside, it was one of the most innovative companies in its sector, with award-winning proprietary technology. On the outside, it was seen as too young to be taken seriously."
+      },
+      "newEra": {
+        "titulo": "New Era franchises started selling where their customers are.",
+        "resumo": "The directors of New Era franchises in São Paulo approached Criário at a difficult time. Mall stores were getting emptier each month, revenue was falling and uncertainty was growing…"
+      },
+      "lumi": {
+        "titulo": "The equipment no one wants to hide.",
+        "resumo": "Rethinking a medical device that bridges hospital care and aesthetics."
+      },
+      "pitec": {
+        "titulo": "Redesigning Pitec’s scientific detector within strict constraints.",
+        "resumo": "It needed to be more compact, lighter and competitively priced to open up new markets, while offering the finish of a real product rather than a laboratory prototype."
+      }
+    }
   }
 }

@@ -56,6 +56,7 @@
     }
   },
   "cases": {
+    "verTodos": "veja todos os cases",
     "titulo": "Construindo resultados com nossos clientes.",
     "descricao": "Ciclo de vendas longo, produto que não converte, imagem que não reflete a qualidade de entrega. Visão centrada no ser humano para projetos reais e problemas reais.",
     "itens": {
@@ -76,6 +77,12 @@
         "contexto": "Cada detalhe conta",
         "resumo": "Como a Criário redesenhou o detector científico da PITEC dentro de restrições rígidas. A grande nacional da área de fotônica, oferece detectores de raio-x para aplicações científicas.",
         "imagemAlt": "Projeto desenvolvido para Pitec"
+      },
+      "lumi": {
+        "cliente": "Lumi",
+        "contexto": "Medicina e estética",
+        "resumo": "Repensando um dispositivo médico que transita entre o hospital e a estética.",
+        "imagemAlt": "Equipamento médico Lumi sobre fundo branco"
       }
     }
   },
@@ -147,5 +154,32 @@
     "especialistas": "Fale com nossos especialistas",
     "especialistasRotulo": "Falar com nossos especialistas",
     "copyright": "Criário. Todos os direitos reservados."
+  },
+  "paginaCases": {
+    "metadata": {
+      "titulo": "Cases de sucesso — Criário",
+      "descricao": "Conheça os projetos de estratégia, design e marketing da Criário para Onboard, New Era, Lumi e Pitec."
+    },
+    "heroAlt": "Embalagens azuis do kit de tecnologia BitDogLab",
+    "titulo": "Negócios que encontraram o que faltava para crescer.",
+    "descricao": "Analisamos seu negócio, construímos a experiência e nos tornamos parceiros de crescimento para quem quer inovar, vender melhor e construir uma vantagem competitiva que o mercado não consegue copiar.",
+    "itens": {
+      "onboard": {
+        "titulo": "ONBOARD se mostra à altura da própria tecnologia.",
+        "resumo": "Por dentro, era uma das empresas mais inovadoras do seu setor, com tecnologia premiada e própria. Por fora, era vista como jovem demais para ser levada a sério."
+      },
+      "newEra": {
+        "titulo": "As franquias New Era passaram a vender onde o cliente está.",
+        "resumo": "Os diretores das franquias New Era de São Paulo procuraram a Criário num momento difícil. As lojas de shopping estavam mais vazias a cada mês, o faturamento sentia a queda e havia uma incerteza…"
+      },
+      "lumi": {
+        "titulo": "O equipamento que ninguém quer esconder.",
+        "resumo": "Repensando um dispositivo médico que transita entre o hospital e a estética."
+      },
+      "pitec": {
+        "titulo": "Redesenhando o detector científico Pitec com restrições rígidas.",
+        "resumo": "Ele precisava ser mais compacto, mais leve e competitivo em preço para abrir novos mercados e, ao mesmo tempo, ter o acabamento de um produto de verdade, não de um protótipo de bancada."
+      }
+    }
   }
 }

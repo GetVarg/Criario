@@ -4,10 +4,11 @@ import { useEffect, useRef } from 'react'
 import { etapasDeServico } from '../../dados/servicos'
 import { EtapaDoProcessoDeServico } from './EtapaDoProcessoDeServico'
 import styles from './SecaoServicos.module.css'
-import type { Textos } from '../../locales'
+import type { Idioma, Textos } from '../../locales'
+import { caminhoDaPagina } from '../../dados/navegacao'
 import { LinkDeContato } from '../contato/LinkDeContato'
 
-export function SecaoServicos({ textos, comum }: { textos: Textos['servicos']; comum: Textos['comum'] }) {
+export function SecaoServicos({ textos, comum, idioma }: { textos: Textos['servicos']; comum: Textos['comum']; idioma: Idioma }) {
   const grade = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -89,7 +90,7 @@ export function SecaoServicos({ textos, comum }: { textos: Textos['servicos']; c
           {etapasDeServico.map(({ id, ...etapa }) => <EtapaDoProcessoDeServico key={id} {...etapa} {...textos.itens[id]} />)}
         </div>
         <div className={styles.chamada}>
-          <a href="#cases">{comum.saibaMais} <span aria-hidden="true">→</span></a>
+          <a href={caminhoDaPagina(idioma, 'cases')}>{comum.saibaMais} <span aria-hidden="true">→</span></a>
           <LinkDeContato>{comum.faleConosco} <span aria-hidden="true">→</span></LinkDeContato>
         </div>
       </div>

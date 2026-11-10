@@ -1,171 +1,130 @@
-# Site do Rodrigo
+# Criário — site institucional
 
-Projeto inicial em Next.js para o site do Rodrigo.
+Site em Next.js, React e TypeScript, com exportação estática para a hospedagem existente. Home e Cases usam a mesma estrutura, os mesmos componentes de contato e os mesmos dicionários de português e inglês.
 
-## Desenvolvimento local
+## Executar e validar
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abra `http://localhost:3000` no navegador.
-
-## Publicação na GoDaddy
-
-### Hospedagem estática / cPanel
-
-O projeto está configurado para exportação estática, compatível com hospedagem compartilhada.
+Abra `http://localhost:3000`. Para conferir a versão de produção:
 
 ```bash
 npm run build
+node scripts/verificar-idiomas.mjs
+node scripts/verificar-contato.mjs
+npm run lint
+npm start
 ```
 
-O comando cria a pasta `out`. Envie **o conteúdo** dessa pasta para o diretório público do domínio na GoDaddy (normalmente `public_html`).
+O build inclui TypeScript e gera `out/`. A verificação de idiomas confere paridade dos JSONs, as quatro rotas exportadas, metadados, títulos, imagens e destinos. A verificação de contato simula respostas; não envia e-mails.
 
-### Hospedagem Node.js / importador ZIP do painel com Airo
+## Rotas e composição
 
-Este fluxo recebe **código-fonte**, não o ZIP do conteúdo de `out/`. O erro pedindo `package.json` na raiz indica esse tipo de importação.
+| Página | Português | Inglês | Componente |
+| --- | --- | --- | --- |
+| Home | `/` | `/en/` | `funcionalidades/pagina-inicial/PaginaInicial.tsx` |
+| Cases de sucesso | `/cases/` | `/en/cases/` | `funcionalidades/cases/PaginaCases.tsx` |
 
-- O ZIP de código-fonte deve conter `package.json` diretamente na raiz, junto de `package-lock.json`, configurações, `app/`, `componentes/`, `funcionalidades/`, `dados/`, `locales/`, `public/` e `scripts/`.
-- Não incluir pasta externa envolvendo o projeto, `node_modules/`, `.next/`, backups, `out/`, arquivos `.env`, outros ZIPs ou credenciais.
-- Instalação: `npm ci --include=dev` (as dependências de desenvolvimento são necessárias para compilar TypeScript). Se o painel instalar automaticamente com `npm install`, manter essas dependências disponíveis na etapa de build.
-- Build: `npm run build`. Inicialização: `npm start`. Usar Node.js 20.9 ou superior, preferencialmente a versão LTS disponível no painel.
-- `scripts/iniciar-servidor.mjs` serve exclusivamente `out/` em `0.0.0.0`, usa a variável `PORT` fornecida pela hospedagem (3000 localmente) e falha claramente se o build estiver ausente ou a porta for inválida/ocupada.
-- `serve` está em `dependencies`, pois é necessário em produção. Não usar `next start` com `output: 'export'`.
-- Nomes dos pacotes: `criario-godaddy-nodejs-<data-hora>.zip` para código-fonte; o ZIP estático anterior é destinado ao cPanel. O upload e o deploy remoto precisam ser concluídos no painel; gerar o ZIP não publica o site.
-- Após importar, conferir os logs de instalação/build/inicialização e testar `/`, `/en/`, imagens e contato na prévia antes de conectar o domínio. A ativação do FormSubmit continua necessária.
+Os arquivos `page.tsx` apenas escolhem o idioma e os metadados. Os layouts de `app/(portugues)/` e `app/en/` definem o atributo `lang`. `trailingSlash: true` gera um `index.html` por rota, sem exigir reescritas na hospedagem.
 
-Requisitos oficiais: https://www.godaddy.com/en-ca/help/upload-my-ai-generated-app-to-godaddy-nodejs-hosting-42987
+```text
+EstruturaSite (idioma, textos, pagina)
+├── ProvedorDeContato — uma instância por página
+├── CabecalhoSite → MenuPrincipal
+├── main
+│   ├── Conteúdo próprio da página
+│   │   ├── Home: apresentação + serviços + cards em destaque
+│   │   └── Cases: hero BitDogLab + introdução + cards horizontais
+│   └── EncerramentoSite
+│       ├── SecaoDepoimentos
+│       ├── CarrosselLogotiposParceiros
+│       ├── Manifesto
+│       └── SecaoFaleConosco → CartaoDeContato → FormularioDeContato
+└── RodapeSite
+```
 
-## Organização e padrões
+`EstruturaSite` centraliza tokens visuais, cabeçalho, rodapé e provedor de contato. `EncerramentoSite` reúne os blocos finais presentes nas duas páginas. As páginas apenas compõem esses elementos; não copiam sua marcação nem importam o CSS da Home para funcionar.
 
-- Código em TypeScript, componentes funcionais React e nomes descritivos em português.
-- `app/(portugues)/`: página e layout de `/`, com `lang="pt-BR"`.
-- `app/en/`: página e layout de `/en/`, com `lang="en"`.
-- `app/globals.css`: estilos globais compartilhados pelas duas versões.
-- `componentes/`: elementos compartilhados, como cabeçalho, logotipo e rodapé.
-- `funcionalidades/<nome>/`: componentes e CSS Modules específicos de cada funcionalidade.
-- `dados/`: IDs estáveis, ordem, caminhos das imagens, âncoras e configuração visual. Textos ficam nos JSONs de tradução.
-- `locales/pt-BR.json` e `locales/en.json`: todos os textos editoriais e de interface, incluindo metadados, textos alternativos, acessibilidade e formulário.
-- `public/images/`: imagens locais. Reutilizar os arquivos existentes sempre que possível.
-- Estilos novos devem ficar no CSS Module da funcionalidade. Evitar seletores com nomes gerados pelo compilador, dependências para efeitos simples e arquivos temporários dentro do código-fonte.
+## Onde editar e como reaproveitar
 
-## Menu principal animado
-
-A navegação fica em `funcionalidades/navegacao/MenuPrincipal.tsx` e `MenuPrincipal.module.css`. Os quatro destinos numerados são definidos em `dados/navegacao.ts`, e seus nomes vêm de `navegacao` no JSON do idioma. Menu e rodapé compartilham os mesmos nomes. O `CabecalhoSite` apenas aciona a abertura.
-
-### Sequência visual
-
-1. Ao abrir, quatro faixas verticais cobrem a tela descendo da esquerda para a direita. Cada faixa leva 560 ms, com atraso de 90 ms entre elas.
-2. O evento `animationend` da última faixa muda o estado de `abrindo` para `aberto`. Só então os itens aparecem, de cima para baixo, com 110 ms de intervalo.
-3. Os links usam movimento e opacidade; apenas os quatro números pequenos recebem desfoque de 4 px até ficarem nítidos.
-4. Ao fechar, as faixas sobem em sequência. A última faixa conclui o fechamento e o componente é desmontado. Os links navegam para sua seção após a saída; `Fale conosco` abre o diálogo de contato depois de liberar a rolagem e encerrar o menu.
-
-### Desempenho e acessibilidade
-
-- Animação nativa em CSS, sem biblioteca, canvas, vídeo, polling, timers de sincronização ou JavaScript executado a cada frame.
-- As áreas grandes animam apenas `transform`. Não há blur de tela inteira, `backdrop-filter` ou `will-change` permanente.
-- O menu só é montado quando necessário e é removido após fechar.
-- `dialog.showModal()` coloca o menu na camada superior e mantém o foco dentro dele, deixando a página de fundo inerte.
-- Esc e o botão de fechar encerram o menu; cancelar devolve o foco ao acionador. Navegar direciona o foco à seção de destino.
-- A rolagem da página é bloqueada durante a abertura; os estilos anteriores são restaurados ao desmontar. O conteúdo do menu pode rolar em telas baixas.
-- `prefers-reduced-motion: reduce` elimina deslocamentos perceptíveis e blur, mantendo os eventos de conclusão com duração mínima.
-- Os links ficam inertes até as faixas cobrirem a página. Fontes e espaços são fluidos, com ajuste específico para celular.
-
-### Verificação de alterações
-
-Para uma validação enxuta, executar `npm run build` (inclui TypeScript), `node scripts/verificar-idiomas.mjs` e `node scripts/verificar-contato.mjs`. O último usa respostas simuladas e não envia e-mails. Usar `npm run lint` quando necessário. Conferir abertura e fechamento, Esc, Tab/Shift+Tab, navegação pelos destinos, troca de idioma e preferência de movimento reduzido. A exportação final continua sendo gerada em `out/` para a hospedagem existente.
-
-## Idiomas e edição de conteúdo
-
-- Português: `/` → `out/index.html`. Inglês: `/en/` → `out/en/index.html`.
-- `trailingSlash: true` gera diretórios com `index.html`, compatíveis com hospedagem estática sem regras de reescrita.
-- Os layouts são separados para gerar o atributo `lang` e os metadados corretos no HTML inicial. A troca de idioma no menu carrega a outra página inteira.
-- Padrão de nomes: `locales/<codigo-BCP-47>.json`. `pt-BR` representa português brasileiro; `en` representa inglês sem uma região específica.
-- Os JSONs têm a mesma estrutura: `marca`, `metadata`, `comum`, `navegacao`, `menu`, `idiomas`, `apresentacao`, `servicos`, `cases`, `depoimentos`, `clientes`, `manifesto`, `contato` e `rodape`.
-- Usar chaves semânticas estáveis, como `cases.itens.pitec.resumo`. Nunca usar o texto traduzido como chave. Alterações de chave devem ser feitas nos dois idiomas.
-- Para editar textos, alterar o JSON correspondente. Para incluir um item, cadastrar seu ID e configuração em `dados/` e seus textos nos dois JSONs. Não traduzir IDs, âncoras nem caminhos de imagens.
-- `locales/index.ts` seleciona o dicionário e tipa ambos a partir de `pt-BR.json`. O script de verificação também confere chaves extras, ausentes e textos vazios.
-- A seleção acontece no servidor durante a geração estática. Componentes interativos recebem apenas seus textos do idioma selecionado; não há biblioteca de tradução, detecção de idioma em tempo de execução ou requisição adicional para carregar JSON.
-- Para outro idioma, criar o JSON, registrá-lo em `locales/index.ts`, adicionar página/layout, link de idioma e alternativa de SEO. Preservar a mesma estrutura de chaves.
-- Os textos de contato, incluindo envio, sucesso, falhas, assunto do e-mail e acessibilidade, ficam em `contato` nos dois JSONs.
-
-## Contato reutilizável e envio de e-mail
-
-### Organização dos arquivos
-
-| Arquivo | Responsabilidade |
+| Necessidade | Fonte única |
 | --- | --- |
-| `dados/contato.ts` | Destinatário, endpoints públicos e timeout de 20 segundos. |
-| `funcionalidades/contato/CartaoDeContato.tsx` | Card verde reutilizável, com X opcional. |
-| `funcionalidades/contato/FormularioDeContato.tsx` | Campos, validação e estados de envio, erro e sucesso. |
-| `funcionalidades/contato/enviarMensagem.ts` | POST e validação da resposta do serviço. |
-| `funcionalidades/contato/ProvedorDeContato.tsx` | Contexto, diálogo único, foco e bloqueio de rolagem. |
-| `funcionalidades/contato/LinkDeContato.tsx` | Acionador reutilizável, com âncora como fallback. |
-| `funcionalidades/contato/Contato.module.css` | Aparência compartilhada entre card fixo, modal e confirmação. |
+| Textos, títulos, acessibilidade e SEO | `locales/pt-BR.json` e `locales/en.json` |
+| Ordem e imagens dos cases | `dados/cases.ts` |
+| Aparência e hover de qualquer card | `funcionalidades/cases/CartaoResumoDeCase.module.css` |
+| Hero, introdução e espaçamento da página de Cases | `funcionalidades/cases/PaginaCases.module.css` |
+| Destinos e rotas por idioma | `dados/navegacao.ts` |
+| Depoimentos e fotos | `dados/depoimentos.ts` e `funcionalidades/depoimentos/` |
+| Clientes e logotipos | `dados/clientes.ts` e `CarrosselLogotiposParceiros` |
+| Manifesto | `componentes/EncerramentoSite.module.css` |
+| Layout da seção fixa de contato | `funcionalidades/contato/SecaoFaleConosco.module.css` |
+| Formulário e diálogo | `funcionalidades/contato/` |
 
-`PaginaInicial` envolve o conteúdo com `ProvedorDeContato`. Para adicionar um novo acionador dentro dessa árvore, usar `<LinkDeContato>…</LinkDeContato>` e aplicar a classe visual desejada. Para inserir o formulário diretamente em outra seção, usar `<CartaoDeContato textos={textos.contato} />`; passar `aoFechar` quando precisar do X. Manter um provedor por página.
+Manter nomes descritivos em português, componentes funcionais e CSS Modules próximos de seus componentes. Dados guardam IDs, ordem e caminhos; JSONs guardam texto. Não usar coordenadas absolutas do exportador de design como estrutura da página. Preferir grid, proporções, espaçamento fluido e modificadores pequenos. Não criar outro componente quando apenas conteúdo ou orientação diferir.
 
-O diálogo abre sobre a página, fecha pelo X, Esc ou clique no fundo e devolve o foco ao acionador. O menu conclui sua saída antes de abrir o formulário. O card do modal é montado no primeiro uso e permanece montado enquanto a página estiver aberta: fechar preserva os campos e não interrompe um envio em andamento. Reabrir mostra o resultado disponível. O card fixo tem estado independente. Após sucesso, `enviar outra mensagem` reinicia o formulário.
+Para uma nova página, criar seu componente em `funcionalidades/`, envolvê-lo com `EstruturaSite`, reutilizar `EncerramentoSite` quando aplicável e adicionar arquivos de rota finos. Registrar o destino em `dados/navegacao.ts` e o conteúdo nos dois idiomas. Mudanças comuns devem ser feitas no componente compartilhado.
 
-### Serviço e ativação obrigatória
+## Página de Cases
 
-O envio usa [FormSubmit AJAX](https://formsubmit.co/documentation), compatível com a exportação estática da GoDaddy, destinado a **pedronicolaulacerda@gmail.com**. Não é necessário colocar uma senha de Gmail, chave SMTP ou backend Next.js no site. Os dados preenchidos são enviados ao FormSubmit, que encaminha o e-mail; o destinatário e o endpoint são configuração pública.
+A composição segue o print e o CSS de referência de 1920 px: hero com proporção 1920/980, introdução em duas colunas e quatro cases na ordem Onboard, New Era, Lumi e Pitec. Cada linha usa uma coluna de texto e duas de imagem, com proporção fotográfica 1280/823 e separadores entre linhas. Abaixo de 768 px, foto e texto se empilham. As alturas podem crescer para acomodar traduções e telas menores.
 
-1. Publicar o conteúdo de `out/` na hospedagem e abrir o site por HTTP(S), nunca diretamente como `file://`.
-2. Fazer um primeiro envio pelo formulário no domínio publicado.
-3. Abrir a mensagem de ativação enviada pelo FormSubmit a `pedronicolaulacerda@gmail.com` e confirmar o formulário. Conferir também o spam.
-4. Fazer outro envio e confirmar a chegada na caixa de entrada antes de disponibilizar o formulário aos visitantes.
+`CartaoResumoDeCase` atende às duas páginas:
 
-A [ativação é exigida pelo serviço](https://formsubmit.co/). Enquanto o destinatário não confirmar, as mensagens podem ficar retidas pelo provedor. A implementação está conectada ao endpoint real, mas a ativação e a entrega na caixa de entrada só podem ser confirmadas pelo titular do e-mail; os testes automatizados locais não efetuam envios reais. Após a confirmação, o provedor também fornece um identificador que pode substituir o e-mail exposto nos endpoints. Alterar destinatário em `dados/contato.ts` exige nova ativação e novo build.
+- `formato="resumo"` (padrão): card da Home, título com nome do cliente e imagem existente.
+- `formato="horizontal"`: título editorial em `h2`, descrição ampliada, texto à esquerda e foto à direita. Recebe `titulo` opcional; identidade, categoria, hover e acessibilidade permanecem compartilhados.
 
-### Estados e comportamento
+`casesEmDestaque` mantém os três cards da Home. `casesDaPagina` define os quatro cases da nova página. A identidade comum fica em `cases.itens`; os títulos e resumos próprios da listagem ficam em `paginaCases.itens`. Para adicionar um case, cadastrar o ID, sua imagem e os textos nos dois JSONs, sem duplicar JSX.
 
-- Validação nativa de nome, e-mail e mensagem, remoção de espaços nas extremidades e limites de tamanho. Campo honeypot para reduzir spam; não foi desativada a proteção do provedor.
-- Durante a requisição, campos e botão ficam desabilitados e uma referência bloqueia cliques duplicados. O serviço recebe `email` para permitir responder ao remetente, assunto localizado, idioma e URL sem query string.
-- A confirmação com check e `mensagem enviada, em breve retornaremos.` aparece apenas após resposta HTTP bem-sucedida com `success: true` ou `success: "true"`. Isso confirma aceitação pelo provedor, não entrega na caixa de entrada.
-- Erros de rede, respostas negativas e timeout não exibem sucesso. Os campos são preservados; o visitante pode tentar novamente ou abrir seu programa de e-mail pelo link alternativo. Um timeout pode ocorrer depois de o provedor aceitar a mensagem; não há reenvio automático.
-- Sem JavaScript, os links continuam apontando para a seção fixa e o formulário usa POST tradicional ao FormSubmit, com a confirmação do próprio provedor.
-- Animação curta com `opacity` e `transform`, sem blur ou dependências adicionais; movimento reduzido desativa a animação. O diálogo mantém o foco dentro dele e permite rolagem em telas pequenas. A barra visual é ocultada apenas no modal (`scrollbar-width` e `::-webkit-scrollbar`), preservando a rolagem por mouse, toque e teclado.
+As cinco imagens novas estão em `public/images/cases/`, em WebP: hero com 1920 px de largura e fotos com 1600 px. As fotos foram extraídas da área direita dos anexos (x=1040, 2560×1646); as colunas com texto dos anexos não integram os arquivos finais. O conteúdo textual é HTML editável. As imagens anteriores da Home permanecem em uso. O hero tem prioridade de carregamento; os cases usam carregamento tardio, dimensões declaradas e texto alternativo.
 
-## Hover dos cases
+O modificador `cascata` de `SecaoDepoimentos` reproduz a posição final da foto de Igor na coluna central da referência desktop. A Home conserva seu alinhamento anterior. Depoimentos, animações, fotos e traduções continuam compartilhados.
 
-`funcionalidades/cases/CartaoResumoDeCase.module.css` controla os três cards. Ao passar o mouse sobre imagem ou texto, apenas a área textual ganha fundo `#181818`, título branco, descrição cinza-clara e destaque verde-claro. A imagem permanece estática. O círculo com `+` acompanha a mudança de cor.
+O círculo `+` é decorativo, como nos cards existentes: ainda não foram fornecidos conteúdo e rotas individuais dos projetos. Não representa um botão funcional. O destino de Hub de conteúdo também permanece pendente; não há link fictício. DM Sans é servida localmente em `public/fonts/`, com sua licença SIL OFL (fonte: Google Fonts). Reang Lanira ainda não está incluída; os títulos que a exigiriam conservam o fallback existente.
 
-O fundo anima a opacidade de uma camada local por 280 ms. Não há JavaScript por frame, blur, biblioteca adicional nem `will-change` permanente. Tab/foco apresenta o mesmo estado; dispositivos sem hover mantêm a leitura normal. Movimento reduzido desativa as transições. O `+` é decorativo: ainda não existem páginas individuais de cases ou uma ação de expansão.
+## Navegação e idiomas
 
-## Serviços: layout e entrada gradual
+A faixa abaixo dos serviços divide a largura entre "saiba mais", que abre a página de Cases no idioma atual, e "fale conosco", que abre o contato. Os links individuais das etapas foram substituídos por essa faixa. O botão "veja todos os cases" ocupa a coluna central abaixo dos cards no desktop e a largura disponível no celular.
 
-`funcionalidades/servicos/SecaoServicos.module.css` mantém quatro colunas no desktop, com os itens 02 e 04 rebaixados e divisórias contínuas. Tablet usa duas colunas; celular, uma.
+`destinoDeNavegacao` é usado por menu e rodapé. Na Home, Cases abre a nova página. Em Cases, Home e Serviços voltam à Home no idioma atual, Cases aponta para a própria seção e Fale conosco abre o diálogo compartilhado. A marca também retorna à Home. `caminhoDaPagina` mantém a página ao trocar o idioma: `/cases/` ↔ `/en/cases/`.
 
-Um `IntersectionObserver` revela os itens uma única vez. No desktop, são 1.000 ms por item, com 360 ms entre entradas; em telas menores, a revelação acontece quando cada item chega à área visível. Somente opacidade e deslocamento vertical são animados. O observador se desconecta ao concluir. Sem JavaScript, em impressão ou com movimento reduzido, o conteúdo continua legível. A fonte Reang Lanira ainda depende do fornecimento do arquivo; há fallback sem serifa.
+Todos os textos ficam nos JSONs com chaves semânticas iguais e não vazias. `locales/index.ts` seleciona e tipa os dicionários no build e gera metadados com alternativas de idioma por página. Não há biblioteca de tradução nem requisições adicionais para buscar textos. Para um novo idioma, adicionar dicionário, registro, layout, rotas e alternativas de SEO.
 
-## Responsividade e depoimentos
+O menu usa quatro faixas com `transform`, 560 ms por faixa e intervalo de 90 ms. Após `animationend` da última faixa, os itens aparecem com 110 ms entre entradas. A navegação aguarda a saída e a liberação da rolagem. Links conservam destinos reais e permitem abrir em outra aba com modificadores. O diálogo mantém o foco; Esc fecha, o cancelamento devolve o foco ao acionador e a navegação interna direciona-o à seção.
 
-- Abrir o DevTools com F12 e acoplá-lo à lateral reduz a largura da viewport. O layout responde à largura disponível; não existe detecção ou bloqueio de F12.
-- Cabeçalho: itens em fluxo com espaçamento nas telas pequenas; composição de marca/menu à esquerda e contato à direita a partir de 768 px. Não há sobreposição entre menu e contato.
-- Apresentação: composição lateral preservada em tablets (768–999 px), com tipografia fluida. Abaixo de 768 px, texto e imagem ocupam blocos separados. Em desktops amplos, os tamanhos máximos anteriores são mantidos.
-- `funcionalidades/depoimentos/Depoimentos.module.css` centraliza os estilos de depoimentos. As regras antigas duplicadas foram removidas da Home.
-- A posição da foto vem exclusivamente de `alinhamento` em `dados/depoimentos.ts`: Paulo e Igor à direita, Luiz à esquerda. Desktop usa três colunas; tablet usa duas; celular apresenta foto antes do texto.
-- A foto enviada de Igor está em `public/images/depoimento-igor-pinheiro.png`. O arquivo anterior foi preservado, mas não é mais usado pelo depoimento.
-- `RevelarFotosDeDepoimentos.tsx` usa um único `IntersectionObserver` para as três fotos. A entrada do marcador localizado a 50% da altura dispara a revelação, inclusive em fotos maiores que a viewport.
-- Uma camada branca desliza para baixo durante 1.100 ms, revelando a foto de cima para baixo sem deformá-la. Só `transform` é animado; não há blur, listener de scroll, loop por frame ou `will-change` permanente.
-- Cada foto é revelada uma vez e deixa de ser observada. Sem JavaScript, com movimento reduzido ou em impressão, as fotos permanecem visíveis. As imagens reservam sua proporção antes do carregamento.
+## Animações e responsividade
 
-## Pendência da referência do menu
+- Cards da Home: hover e foco ampliam a foto em 6%, mantendo o recorte, e escurecem o texto. Um círculo verde translúcido acompanha o mouse sem bloquear interação. O círculo não aparece em telas de toque; movimento reduzido desativa o zoom e o círculo. Os cards horizontais conservam a foto estática. O estilo vive no módulo do card.
+- Serviços: quatro colunas no desktop, duas no tablet, uma no celular. `IntersectionObserver` revela cada item uma vez, sem listener de scroll ou animação JavaScript por frame.
+- Depoimentos: um observador revela as fotos quando seu ponto médio entra na viewport. Uma camada branca desliza por 1100 ms; o observador é removido ao concluir. Sem JavaScript, as imagens continuam visíveis.
+- `prefers-reduced-motion` remove deslocamentos e transições. Menu e formulário mantêm navegação por teclado. Layouts usam a largura real disponível, inclusive quando o DevTools ocupa parte da janela.
 
-O segundo print recebido para o menu apresenta apenas um fundo escuro, inclusive no arquivo original. Não foi possível identificar os nomes completos nem o hover desejado. Foram padronizados `Home` e `Cases de sucesso` com a referência anterior, mantendo os quatro destinos existentes. O hover atual do menu (verde-claro e entrada da seta) foi preservado até receber uma referência legível ou descrição. `Hub de conteúdo` aparece no rodapé da referência inicial, mas não há página ou URL de destino fornecida; não foi criado um link sem destino.
+Ao alterar elementos compartilhados, conferir Home e Cases, nos dois idiomas, em desktop, tablet e celular. Verificar menu, Esc, foco, troca de idioma, retorno à Home/Serviços, abertura do contato e ausência de rolagem horizontal.
 
-## Última validação
+## Contato
 
-- Build de produção e TypeScript concluídos com sucesso.
-- 86 textos por idioma, com paridade exata das chaves e verificação do HTML exportado de `/` e `/en/`.
-- Foto de Igor conferida por hash: o arquivo incorporado é idêntico ao anexo fornecido.
-- A conferência visual da responsividade e da revelação de depoimentos ficou pendente: a ferramenta de navegador falhou ao inicializar nesta sessão. Build e TypeScript destas alterações passaram.
-- Conferência visual do estado escuro do card Pitec, com os cards vizinhos no estado normal.
-- Troca de português para inglês pelo menu verificada no navegador, incluindo `lang="en"` e restauração da rolagem.
+A seção fixa tem título sobre fundo branco. O card compartilhado com o modal usa degradê do canto inferior esquerdo `#02331E` ao superior direito `#41A87D`, e o botão de envio fica centralizado. "Como nos conheceu?" é um seletor nativo com seis opções traduzidas, incluídas no campo `origem` da mensagem.
 
-## Revisão da tela principal
+`dados/contato.ts` concentra destinatário, endpoints e timeout de 20 segundos. `FormularioDeContato` valida campos e controla envio, sucesso e erro. `enviarMensagem.ts` realiza o POST. `CartaoDeContato` fornece o card verde, com X opcional; `ProvedorDeContato` fornece o diálogo único. Novos acionadores dentro da estrutura devem usar `LinkDeContato`.
 
-Atualiza tipografia local, proporções do hero, cabeçalho, menu, serviços, cards e depoimentos. Extrai estrutura e encerramento para componentes reutilizáveis. O contato passa a oferecer opções de origem e validar formato, tamanho e caracteres de controle; remove o honeypot opcional para evitar falsos positivos de preenchimento automático. A validação no navegador não substitui as proteções no serviço receptor.
+O diálogo fecha por X, Esc ou fundo e restaura o foco. Fechar preserva os campos e não interrompe um envio; o card fixo possui estado independente. Sucesso só aparece após resposta HTTP válida com `success: true` ou `"true"`. Falha, timeout e erro de rede preservam os campos e oferecem alternativa por e-mail; não há reenvio automático. Validação nativa e bloqueio de envio duplicado permanecem ativos. O honeypot opcional foi removido para evitar rejeição por preenchimento automático de um campo invisível. Sem JavaScript, o formulário usa POST tradicional e os links apontam à seção fixa.
+
+`validarContato.ts` confere obrigatoriedade, limites, caracteres de controle, formato de e-mail/telefone e opções de origem. Erros focam o campo correspondente. Texto livre preserva acentos, apóstrofos e quebras de linha; não se tenta identificar SQL/HTML por uma lista de palavras proibidas. Essas verificações no navegador são contornáveis. O site não executa SQL, shell ou HTML a partir desses campos, mas a validação no servidor, escape no e-mail e proteção contra abuso dependem do FormSubmit e não foram auditados. Se for necessário controlar essas garantias, será preciso um backend com validação, escape contextual e limitação de requisições.
+
+O envio usa FormSubmit AJAX, destinado a **pedronicolaulacerda@gmail.com**, sem senha de Gmail, SMTP ou backend próprio. Destinatário e endpoint são públicos. Para ativar:
+
+1. Publicar em HTTP(S) e enviar pelo formulário no domínio.
+2. Confirmar o e-mail de ativação do FormSubmit, inclusive verificando spam.
+3. Enviar novamente e confirmar a entrega na caixa de entrada.
+
+A aceitação pelo serviço não comprova entrega. A ativação e a entrega dependem do titular do e-mail. Alterar o destinatário exige nova ativação e build. Após a ativação, o identificador fornecido pelo serviço pode substituir o endereço público nos endpoints. Referência: https://formsubmit.co/documentation.
+
+## Publicação na GoDaddy
+
+**Hospedagem estática/cPanel:** executar `npm run build` e enviar o conteúdo de `out/` para `public_html`. Preservar os diretórios `cases/`, `en/` e `en/cases/`, além de `_next/` e imagens.
+
+**Hospedagem Node.js/importador Airo:** enviar ZIP de código-fonte com `package.json` na raiz, junto de lockfile, configurações, `app/`, `componentes/`, `funcionalidades/`, `dados/`, `locales/`, `public/` e `scripts/`. Excluir pasta envolvente, `node_modules/`, `.next/`, `out/`, backups, ZIPs, `.env` e credenciais. Instalação: `npm ci --include=dev`; build: `npm run build`; inicialização: `npm start`. Usar Node.js 20.9 ou superior.
+
+`scripts/iniciar-servidor.mjs` serve apenas `out/`, em `0.0.0.0`, respeita `PORT` (3000 por padrão) e falha se o build estiver ausente ou a porta for inválida/ocupada. `serve` é dependência de produção. Não usar `next start` com exportação estática. Gerar arquivos ou ZIP não publica o site: conferir logs, as quatro rotas, imagens e contato na prévia antes de conectar o domínio.

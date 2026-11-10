@@ -43,3 +43,12 @@
 @media (prefers-reduced-motion: reduce) { .imagem[data-revelacao]::after { animation: none; transform: translateY(100%); } }
 @media print { .imagem[data-revelacao]::after { animation: none; transform: translateY(100%); } }
 
+@media (min-width: 1000px) {
+  .cascata { padding-top: 19.5833vw; }
+  .cascata .introducao { margin-bottom: 0; }
+  .cascata .introducao h2, .cascata .texto h3 { font-family: var(--fonte-titulos); }
+  .cascata .introducao h2 { max-width: 400px; }
+  .cascata .depoimento:last-child .imagem { grid-column: 2; }
+  .cascata .depoimento:last-child .texto { grid-column: 3; text-align: left; }
+  .cascata .grade { padding-bottom: 11.4583vw; }
+}

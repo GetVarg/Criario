@@ -1,3 +1,4 @@
+import { caminhoDaPagina, type PaginaDoSite } from '../dados/navegacao'
 import portugues from './pt-BR.json'
 import ingles from './en.json'
 
@@ -10,11 +11,12 @@ export function obterTextos(idioma: Idioma): Textos {
   return dicionarios[idioma]
 }
 
-export function obterMetadata(idioma: Idioma) {
-  const { metadata } = obterTextos(idioma)
+export function obterMetadata(idioma: Idioma, pagina: PaginaDoSite = 'inicio') {
+  const textos = obterTextos(idioma)
+  const metadata = pagina === 'cases' ? textos.paginaCases.metadata : textos.metadata
   return {
     title: metadata.titulo,
     description: metadata.descricao,
-    alternates: { languages: { 'pt-BR': '/', en: '/en/' } },
+    alternates: { languages: { 'pt-BR': caminhoDaPagina('pt-BR', pagina), en: caminhoDaPagina('en', pagina) } },
   }
 }

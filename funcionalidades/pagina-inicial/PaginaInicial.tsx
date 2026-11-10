@@ -2,6 +2,7 @@ import { EstruturaSite } from '../../componentes/EstruturaSite'
 import { EncerramentoSite } from '../../componentes/EncerramentoSite'
 import { FaleConosco } from '../../componentes/FaleConosco'
 import { casesEmDestaque } from '../../dados/cases'
+import { caminhoDaPagina } from '../../dados/navegacao'
 import { SecaoServicos } from '../servicos/SecaoServicos'
 import { CartaoResumoDeCase } from '../cases/CartaoResumoDeCase'
 import styles from './PaginaInicial.module.css'
@@ -22,7 +23,7 @@ export function PaginaInicial({ idioma }: { idioma: Idioma }) {
           </div>
         </section>
 
-        <SecaoServicos textos={textos.servicos} comum={textos.comum} />
+        <SecaoServicos textos={textos.servicos} comum={textos.comum} idioma={idioma} />
 
         <section id="cases" className={styles.cases}>
           <div className={styles.casesIntro}>
@@ -31,6 +32,9 @@ export function PaginaInicial({ idioma }: { idioma: Idioma }) {
           </div>
           <div className={styles.casesGrade}>
             {casesEmDestaque.map(({ id, imagem }) => <CartaoResumoDeCase key={id} imagem={imagem} {...textos.cases.itens[id]} />)}
+          </div>
+          <div className={styles.casesRodape}>
+            <a href={caminhoDaPagina(idioma, 'cases')}>{textos.cases.verTodos} <span aria-hidden="true">→</span></a>
           </div>
         </section>
 

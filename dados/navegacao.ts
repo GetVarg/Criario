@@ -16,6 +16,6 @@ export function caminhoDaPagina(idioma: Idioma, pagina: PaginaDoSite = 'inicio')
 
 export function destinoDeNavegacao(destino: DestinoDeNavegacao, idioma: Idioma, pagina: PaginaDoSite) {
   if (destino === 'fale-conosco') return '#fale-conosco'
-  if (destino === 'cases') return '#cases'
+  if (destino === 'cases') return pagina === 'cases' ? '#cases' : caminhoDaPagina(idioma, 'cases')
   return (pagina === 'inicio' ? '' : caminhoDaPagina(idioma)) + '#' + destino
 }

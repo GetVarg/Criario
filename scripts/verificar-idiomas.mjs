@@ -29,4 +29,26 @@ for (const [arquivo, idioma, textos] of [['index.html', 'pt-BR', portugues], ['e
   }
 }
 
-console.log(`OK: ${chavesPortugues.length} textos por idioma; HTML, metadados e âncoras de / e /en/ verificados.`)
+
+for (const [arquivo, idioma, textos, raiz] of [
+  ['cases/index.html', 'pt-BR', portugues, '/'],
+  ['en/cases/index.html', 'en', ingles, '/en/'],
+]) {
+  const html = readFileSync(new URL('../out/' + arquivo, import.meta.url), 'utf8')
+  assert.ok(html.includes('lang="' + idioma + '"'), arquivo + ': idioma incorreto')
+  assert.ok(html.includes(textos.paginaCases.metadata.titulo), arquivo + ': metadados incorretos')
+  assert.ok(html.includes(textos.paginaCases.titulo), arquivo + ': título não traduzido')
+  assert.equal((html.match(/<h1[ >]/g) || []).length, 1, arquivo + ': deve ter um único h1')
+  assert.equal((html.match(/<article /g) || []).length, 7, arquivo + ': quatro cases e três depoimentos')
+  for (const item of Object.values(textos.paginaCases.itens)) assert.ok(html.includes(item.titulo), arquivo + ': case ausente')
+  for (const href of [raiz + '#inicio', raiz + '#servicos', '#cases', '#fale-conosco']) {
+    assert.ok(html.includes('href="' + href + '"'), arquivo + ': destino incorreto ' + href)
+  }
+  assert.ok(html.includes('href="/cases/"'), arquivo + ': alternativa PT ausente')
+  assert.ok(html.includes('href="/en/cases/"'), arquivo + ': alternativa EN ausente')
+  assert.ok(html.includes(textos.contato.formulario.necessidade), arquivo + ': contato ausente')
+  for (const [, src] of html.matchAll(/<img[^>]+src="([^"?]+)"/g)) {
+    assert.ok(readFileSync(new URL('../out' + src, import.meta.url)).length, arquivo + ': imagem ausente ' + src)
+  }
+}
+console.log('OK: ' + chavesPortugues.length + ' textos por idioma; quatro rotas, metadados, conteúdo, imagens e destinos verificados.')
