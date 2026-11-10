@@ -1,3 +1,49 @@
+/* Fontes dos arquivos fornecidos, distribuídas localmente com o site. */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url('/fonts/dm-sans-variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url('/fonts/dm-sans-italic-variable.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ReangLanira';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ReangLanira-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'ReangLanira';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ReangLanira-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'ReangLanira';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/ReangLanira-Bold.woff2') format('woff2');
+}
+
+:root {
+  --fonte-corpo: 'DM Sans', Arial, sans-serif;
+  --fonte-titulos: 'ReangLanira', 'DM Sans', Arial, sans-serif;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -15,8 +61,18 @@ html {
 
 body {
   color: #181818;
-  font-family: 'DM Sans', Arial, sans-serif;
+  font-family: var(--fonte-corpo);
+  font-optical-sizing: auto;
   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fonte-titulos);
 }
 
 a {

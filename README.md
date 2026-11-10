@@ -165,3 +165,7 @@ O segundo print recebido para o menu apresenta apenas um fundo escuro, inclusive
 - A conferência visual da responsividade e da revelação de depoimentos ficou pendente: a ferramenta de navegador falhou ao inicializar nesta sessão. Build e TypeScript destas alterações passaram.
 - Conferência visual do estado escuro do card Pitec, com os cards vizinhos no estado normal.
 - Troca de português para inglês pelo menu verificada no navegador, incluindo `lang="en"` e restauração da rolagem.
+
+## Revisão da tela principal
+
+Atualiza tipografia local, proporções do hero, cabeçalho, menu, serviços, cards e depoimentos. Extrai estrutura e encerramento para componentes reutilizáveis. O contato passa a oferecer opções de origem e validar formato, tamanho e caracteres de controle; remove o honeypot opcional para evitar falsos positivos de preenchimento automático. A validação no navegador não substitui as proteções no serviço receptor.

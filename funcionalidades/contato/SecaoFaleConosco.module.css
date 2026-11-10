@@ -1,0 +1,11 @@
+.secao { display: grid; grid-template-columns: minmax(280px, .65fr) minmax(0, 1.35fr); min-height: 670px; background: #fff; }
+.titulo { display: flex; align-items: flex-start; min-width: 0; padding: clamp(3rem, 7vw, 8rem) clamp(1.25rem, 6.25vw, 7.5rem); background: #fff; overflow-wrap: anywhere; }
+.titulo h2 { margin: 0 0 1.4rem; font-family: var(--fonte-titulos); font-size: clamp(2.25rem, 4vw, 4.25rem); font-weight: 400; line-height: 1.05; }
+.painel { display: grid; place-items: center; padding: clamp(2rem, 6vw, 6rem); background: linear-gradient(125deg, rgb(255 255 255 / .12), rgb(255 255 255 / .04)), url('/images/fundo-contato-maquete.png') center / cover no-repeat; }
+@media (max-width: 680px) { .secao { grid-template-columns: 1fr; } .titulo { min-height: 190px; } }
+@media (min-width: 1000px) {
+  .secao { grid-template-columns: 33.333% 66.667%; min-height: min(58.5417vw, 1124px); }
+  .titulo { padding-top: min(9.7917vw, 188px); }
+  .titulo h2 { font-size: clamp(32px, 2.8646vw, 55px); }
+  .painel { padding: 1rem; }
+}

@@ -5,6 +5,6 @@ export default [
   ...nextVitals,
   ...nextTs,
   {
-    ignores: ['.next/**', 'out/**', 'node_modules/**'],
+    ignores: ['.next/**', '.next-backup-*/**', 'out/**', 'node_modules/**'],
   },
 ]

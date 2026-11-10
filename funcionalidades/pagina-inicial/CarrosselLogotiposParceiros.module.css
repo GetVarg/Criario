@@ -30,8 +30,8 @@
 .grupo img {
   display: block;
   flex: none;
-  width: clamp(170px, 16vw, 245px);
-  height: 100px;
+  width: clamp(110px, 10vw, 155px);
+  height: 60px;
   object-fit: contain;
 }
 
@@ -45,5 +45,5 @@
 
 @media (max-width: 680px) {
   .faixa { --altura-faixa: 132px; }
-  .grupo img { width: 155px; height: 82px; }
+  .grupo img { width: 100px; height: 50px; }
 }

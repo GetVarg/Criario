@@ -1,0 +1,11 @@
+.pagina {
+  --preto: #181818;
+  --texto: #757575;
+  --verde: #0ca766;
+  --linha: #d8d8d8;
+  overflow: hidden;
+  background: #fff;
+}
+.pagina :global(.logotipo-criario) { display: inline-block; color: var(--preto); font-family: var(--fonte-corpo); font-size: 1.25rem; font-weight: 700; letter-spacing: .12em; }
+.pagina :global(.logotipo-criario--invertido) { color: #fff; }
+@media (min-width: 1000px) { .pagina :global(.logotipo-criario) { font-size: 1.7rem; } }

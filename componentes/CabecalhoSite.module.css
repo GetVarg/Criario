@@ -13,7 +13,7 @@
 }
 
 .logo { display: inline-flex; }
-.logo img { display: block; width: clamp(120px, 12vw, 180px); height: auto; filter: brightness(0) invert(1); }
+.logo img { display: block; width: clamp(90px, 7.125vw, 156px); height: auto; filter: brightness(0) invert(1); }
 
 .faleConoscoContainer {
   justify-self: end;
@@ -48,7 +48,7 @@
 
 @media (min-width: 1000px) {
   .cabecalho {
-    min-height: max(76px, 5.2083vw);
+    min-height: max(64px, 5.2083vw);
     padding: 0;
     color: #181818;
     background: linear-gradient(to right, #181818 0 33.333%, #fff 33.333% 100%);
@@ -68,10 +68,10 @@
     top: 50%;
     transform: translateY(-50%);
     color: #fff;
-    font-size: 22px;
+    font-size: clamp(14px, 1.1458vw, 22px);
   }
 
-  .iconeMenu { width: 37px; gap: 9px; }
+  .iconeMenu { width: clamp(24px, 1.9271vw, 37px); gap: clamp(6px, .46875vw, 9px); }
   .iconeMenu i { height: 1px; }
 
   .faleConoscoContainer {
@@ -80,4 +80,9 @@
     top: 50%;
     transform: translateY(-50%);
   }
+}
+
+/* Continua a divisória do hero pela área branca do cabeçalho. */
+@media (min-width: 1000px) {
+  .cabecalho::after { position: absolute; top: 0; bottom: 0; left: 66.667%; border-left: 1px solid #cecece; content: ''; pointer-events: none; }
 }

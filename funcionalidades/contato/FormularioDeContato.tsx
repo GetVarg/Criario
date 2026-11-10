@@ -5,6 +5,7 @@ import type { FormEvent } from 'react'
 import type { Textos } from '../../locales'
 import { emailDeContato, endpointDeContato, formularioDeContato, tempoLimiteDeEnvio } from '../../dados/contato'
 import { enviarMensagem } from './enviarMensagem'
+import { campoInvalido } from './validarContato'
 import styles from './Contato.module.css'
 
 export function FormularioDeContato({ textos }: { textos: Textos['contato']['formulario'] }) {
@@ -29,12 +30,16 @@ export function FormularioDeContato({ textos }: { textos: Textos['contato']['for
     const formulario = evento.currentTarget
     if (!formulario.reportValidity()) return
     const dados = new FormData(formulario)
-    for (const [chave, valor] of dados.entries()) {
-      if (typeof valor === 'string') dados.set(chave, valor.trim())
-    }
-    if (!dados.get('name') || !dados.get('email') || !dados.get('message') || dados.get('_honey')) {
+    const campo = campoInvalido(dados, Object.entries(textos.origens).filter(([chave]) => chave !== 'selecione').map(([, rotulo]) => rotulo))
+    if (campo) {
       setErro(textos.invalido)
       setEstado('erro')
+      const entrada = formulario.elements.namedItem(campo)
+      if (entrada instanceof HTMLInputElement || entrada instanceof HTMLTextAreaElement || entrada instanceof HTMLSelectElement) {
+        entrada.setCustomValidity(textos.invalido)
+        entrada.reportValidity()
+        entrada.focus()
+      }
       return
     }
     // Envia somente origem e caminho, sem parâmetros de URL potencialmente sensíveis.
@@ -69,23 +74,30 @@ export function FormularioDeContato({ textos }: { textos: Textos['contato']['for
   )
 
   return (
-    <form className={styles.formulario} action={formularioDeContato} method="POST" onSubmit={lidarComEnvio} aria-busy={enviando} aria-describedby={erro ? idErro : undefined}>
+    <form className={styles.formulario} action={formularioDeContato} method="POST" onSubmit={lidarComEnvio} onInput={(evento) => {
+      const entrada = evento.target
+      if (entrada instanceof HTMLInputElement || entrada instanceof HTMLTextAreaElement || entrada instanceof HTMLSelectElement) entrada.setCustomValidity('')
+    }} aria-busy={enviando} aria-describedby={erro ? idErro : undefined}>
       <input type="hidden" name="_subject" value={textos.assunto} />
       <input type="hidden" name="_template" value="table" />
-      <div className={styles.armadilha} aria-hidden="true"><input name="_honey" type="text" tabIndex={-1} autoComplete="off" /></div>
       <div className={styles.campos}>
         <label>{textos.nome}<input required name="name" autoComplete="name" maxLength={120} disabled={enviando} /></label>
         <label>{textos.empresa}<input name="empresa" autoComplete="organization" maxLength={160} disabled={enviando} /></label>
         <label>{textos.email}<input required type="email" name="email" autoComplete="email" maxLength={254} disabled={enviando} /></label>
         <label>{textos.telefone}<input type="tel" name="telefone" autoComplete="tel" maxLength={40} disabled={enviando} /></label>
         <label>{textos.cargo}<input name="cargo" autoComplete="organization-title" maxLength={120} disabled={enviando} /></label>
-        <label>{textos.origem}<input name="origem" maxLength={200} disabled={enviando} /></label>
+        <label>{textos.origem}
+          <select name="origem" defaultValue="" disabled={enviando}>
+            <option value="" disabled>{textos.origens.selecione}</option>
+            {Object.entries(textos.origens).filter(([chave]) => chave !== 'selecione').map(([chave, rotulo]) => <option key={chave} value={rotulo}>{rotulo}</option>)}
+          </select>
+        </label>
       </div>
       <label className={styles.necessidade}>{textos.necessidade}
         <textarea required name="message" rows={3} maxLength={5000} disabled={enviando} />
       </label>
       {erro && <p id={idErro} className={styles.erro} role="alert">{erro} <a className={styles.alternativa} href={`mailto:${emailDeContato}`}>{textos.alternativa}</a></p>}
-      <button className={styles.enviar} type="submit" disabled={enviando}>{enviando ? textos.enviando : textos.enviar} <span aria-hidden="true">↗</span></button>
+      <button className={styles.enviar} type="submit" disabled={enviando}>{enviando ? textos.enviando : textos.enviar} <span aria-hidden="true">→</span></button>
     </form>
   )
 }

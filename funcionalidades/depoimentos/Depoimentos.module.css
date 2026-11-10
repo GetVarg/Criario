@@ -3,8 +3,8 @@
 .secao::before { left: 33.333%; }
 .secao::after { left: 66.667%; }
 .introducao, .grade { position: relative; z-index: 1; }
-.introducao { width: min(513px, 87.5%); margin: 0 0 clamp(48px, 7.2917vw, 140px) 6.25%; }
-.introducao h2 { margin: 0 0 20px; font-family: Georgia, serif; font-size: clamp(32px, 2.8646vw, 55px); font-weight: 400; line-height: 1.2; }
+.introducao { width: 25%; min-width: 0; margin: 0 0 clamp(48px, 7.2917vw, 140px) 6.25%; overflow-wrap: anywhere; }
+.introducao h2 { margin: 0 0 20px; font-family: var(--fonte-titulos); font-size: clamp(32px, 2.8646vw, 55px); font-weight: 400; line-height: 1.2; }
 .introducao p { max-width: 410px; margin: 0; color: #757575; font-size: clamp(17px, 1.4583vw, 28px); line-height: 1.4; }
 .grade { display: grid; gap: clamp(40px, 5.2083vw, 100px); padding-bottom: clamp(40px, 5.2083vw, 100px); }
 .depoimento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; }
@@ -14,7 +14,7 @@
 .esquerda .imagem { grid-column: 1; }
 .texto { grid-column: 2; grid-row: 1; min-width: 0; padding: clamp(20px, 2.0833vw, 40px); overflow-wrap: break-word; }
 .direita .texto { text-align: right; }
-.texto h3 { margin: 0 0 8px; font-family: Georgia, serif; font-size: clamp(28px, 2.34375vw, 45px); font-weight: 400; line-height: 1.2; }
+.texto h3 { margin: 0 0 8px; font-family: var(--fonte-titulos); font-size: clamp(28px, 2.34375vw, 45px); font-weight: 400; line-height: 1.2; }
 .texto strong { color: #0ca766; font-size: clamp(16px, 1.14583vw, 22px); font-weight: 500; line-height: 1.4; }
 .texto p { margin: 16px 0 0; color: #757575; font-size: clamp(16px, 1.14583vw, 22px); font-style: italic; line-height: 1.4; }
 
@@ -26,6 +26,7 @@
 @keyframes revelarFoto { from { transform: translateY(0); } to { transform: translateY(100%); } }
 
 @media (min-width: 681px) and (max-width: 999px) {
+  .introducao { width: 40.625%; }
   .secao::before { left: 50%; }
   .secao::after { display: none; }
   .depoimento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -33,6 +34,7 @@
   .direita .texto { grid-column: 1; }
 }
 @media (max-width: 680px) {
+  .introducao { width: 87.5%; }
   .secao::before, .secao::after { display: none; }
   .depoimento { grid-template-columns: minmax(0, 1fr); }
   .direita .imagem, .esquerda .imagem { grid-column: 1; width: 100%; max-width: 480px; justify-self: center; }
@@ -40,3 +42,4 @@
 }
 @media (prefers-reduced-motion: reduce) { .imagem[data-revelacao]::after { animation: none; transform: translateY(100%); } }
 @media print { .imagem[data-revelacao]::after { animation: none; transform: translateY(100%); } }
+

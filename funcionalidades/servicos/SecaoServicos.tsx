@@ -86,10 +86,11 @@ export function SecaoServicos({ textos, comum }: { textos: Textos['servicos']; c
       </div>
       <div className={styles.processo}>
         <div ref={grade} className={styles.grade}>
-          {etapasDeServico.map(({ id, ...etapa }) => <EtapaDoProcessoDeServico key={id} {...etapa} {...textos.itens[id]} saibaMais={comum.saibaMais} />)}
+          {etapasDeServico.map(({ id, ...etapa }) => <EtapaDoProcessoDeServico key={id} {...etapa} {...textos.itens[id]} />)}
         </div>
         <div className={styles.chamada}>
-          <LinkDeContato>{comum.faleConosco}</LinkDeContato>
+          <a href="#cases">{comum.saibaMais} <span aria-hidden="true">→</span></a>
+          <LinkDeContato>{comum.faleConosco} <span aria-hidden="true">→</span></LinkDeContato>
         </div>
       </div>
     </section>

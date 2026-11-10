@@ -122,6 +122,15 @@
       "telefone": "Telefone",
       "cargo": "Cargo",
       "origem": "Como nos conheceu?",
+      "origens": {
+        "selecione": "Selecione uma opção",
+        "redesSociais": "Redes Sociais",
+        "indicacao": "Indicação",
+        "pesquisa": "Pesquisa na internet",
+        "ia": "ChatGPT ou IA",
+        "cliente": "Já sou cliente",
+        "outro": "Outro"
+      },
       "necessidade": "Quais são suas necessidades?",
       "enviar": "enviar mensagem",
       "enviando": "enviando mensagem…",
@@ -129,7 +138,7 @@
       "novaMensagem": "enviar outra mensagem",
       "erro": "Não foi possível enviar a mensagem. Tente novamente ou fale conosco por e-mail.",
       "tempoEsgotado": "O envio demorou mais que o esperado e não foi possível confirmar o recebimento. Você pode tentar novamente ou falar conosco por e-mail.",
-      "invalido": "Preencha seu nome, e-mail e mensagem antes de enviar.",
+      "invalido": "Confira o campo destacado: preencha os obrigatórios e use um e-mail e telefone válidos, respeitando o limite de caracteres.",
       "alternativa": "enviar por e-mail",
       "assunto": "Novo contato pelo site Criário"
     }

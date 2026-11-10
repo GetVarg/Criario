@@ -45,3 +45,35 @@ await assert.rejects(enviar, /Sem conexão/)
 retorno = new DOMException('Tempo esgotado', 'AbortError')
 await assert.rejects(enviar, { name: 'AbortError' })
 console.log('OK: aceitação, rejeição, HTTP, JSON inválido, rede e cancelamento; nenhum e-mail enviado.')
+
+const validacao = {}
+const fonteValidacao = readFileSync(new URL('../funcionalidades/contato/validarContato.ts', import.meta.url), 'utf8')
+runInNewContext(ts.transpileModule(fonteValidacao, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020 } }).outputText, { exports: validacao })
+const validar = (campo, valor) => {
+  const formulario = new FormData()
+  formulario.set('name', "  João D'Ávila  ")
+  formulario.set('email', 'teste@example.com')
+  formulario.set('message', 'Projeto de interiores\nÁrea: 100 m² 👨‍👩‍👧')
+  formulario.set('telefone', '+5561993405115')
+  if (campo) formulario.set(campo, valor)
+  const resultado = validacao.campoInvalido(formulario, ['Pesquisa na internet'])
+  if (!resultado) assert.equal(formulario.get('name'), "João D'Ávila")
+  return resultado
+}
+assert.equal(validar(), null)
+// Conteúdo textual não é executado nem destruído por uma blacklist de SQL/HTML.
+assert.equal(validar('message', "<script>alert(1)</script> ' OR 1=1; --"), null)
+assert.equal(validar('_honey', 'preenchimento automático'), null)
+assert.equal(validar('origem', 'Pesquisa na internet'), null)
+assert.equal(validar('telefone', ''), null)
+for (const [campo, valor] of [
+  ['name', '   '], ['message', '\n  '], ['message', 'a'.repeat(5001)],
+  ['email', 'email-invalido'], ['email', 'a@b.com\r\nBcc: outro@example.com'],
+  ['telefone', '123'], ['telefone', '+55<script>'], ['origem', 'opção adulterada'],
+  ['cargo', 'a\u0000b'], ['empresa', 'a'.repeat(161)],
+]) assert.equal(validar(campo, valor), campo)
+const duplicados = new FormData()
+duplicados.append('name', 'João')
+duplicados.append('name', 'Maria')
+assert.equal(validacao.campoInvalido(duplicados, []), 'name')
+console.log('OK: campos preenchidos, autofill, Unicode, formatos, limites, controles e duplicatas.')

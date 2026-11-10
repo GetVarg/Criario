@@ -122,6 +122,15 @@
       "telefone": "Phone",
       "cargo": "Job title",
       "origem": "How did you hear about us?",
+      "origens": {
+        "selecione": "Select an option",
+        "redesSociais": "Social media",
+        "indicacao": "Referral",
+        "pesquisa": "Internet search",
+        "ia": "ChatGPT or AI",
+        "cliente": "I'm already a client",
+        "outro": "Other"
+      },
       "necessidade": "What do you need?",
       "enviar": "send message",
       "enviando": "sending message…",
@@ -129,7 +138,7 @@
       "novaMensagem": "send another message",
       "erro": "We couldn't send your message. Please try again or contact us by email.",
       "tempoEsgotado": "Sending took longer than expected and we couldn't confirm receipt. You can try again or contact us by email.",
-      "invalido": "Please enter your name, email and message before sending.",
+      "invalido": "Check the highlighted field: fill in required fields and use a valid email and phone number within the character limit.",
       "alternativa": "send by email",
       "assunto": "New inquiry from the Criário website"
     }

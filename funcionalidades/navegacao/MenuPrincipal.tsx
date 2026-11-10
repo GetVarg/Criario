@@ -1,21 +1,19 @@
 'use client'
 
 import { useEffect, useRef, useState, type AnimationEvent, type CSSProperties, type KeyboardEvent } from 'react'
-import { LogotipoCriario } from '../../componentes/LogotipoCriario'
-import { itensDeNavegacao } from '../../dados/navegacao'
+import { itensDeNavegacao, destinoDeNavegacao, caminhoDaPagina, type PaginaDoSite } from '../../dados/navegacao'
 import styles from './MenuPrincipal.module.css'
 import type { TextosCabecalho } from '../../componentes/CabecalhoSite'
 import type { Idioma } from '../../locales'
 import { useContato } from '../contato/ProvedorDeContato'
 
 type FaseDoMenu = 'abrindo' | 'aberto' | 'fechando'
-type MenuPrincipalProps = { aoFechar: () => void; textos: TextosCabecalho; idioma: Idioma }
+type MenuPrincipalProps = { aoFechar: () => void; textos: TextosCabecalho; idioma: Idioma; pagina: PaginaDoSite }
 
-export function MenuPrincipal({ aoFechar, textos, idioma }: MenuPrincipalProps) {
+export function MenuPrincipal({ aoFechar, textos, idioma, pagina }: MenuPrincipalProps) {
   const abrirContato = useContato()?.abrirContato
   const [fase, setFase] = useState<FaseDoMenu>('abrindo')
   const dialogo = useRef<HTMLDialogElement>(null)
-  const botaoFechar = useRef<HTMLButtonElement>(null)
   const destinoPendente = useRef<string | null>(null)
 
   useEffect(() => {
@@ -42,12 +40,13 @@ export function MenuPrincipal({ aoFechar, textos, idioma }: MenuPrincipalProps) 
         if (acionador instanceof HTMLElement && acionador.isConnected) acionador.focus({ preventScroll: true })
         return
       }
-      if (destino === 'fale-conosco' && abrirContato) {
+      if (destino === '#fale-conosco' && abrirContato) {
         abrirContato(acionador instanceof HTMLElement ? acionador : undefined)
         return
       }
+      if (!destino.startsWith('#')) { window.location.assign(destino); return }
       window.location.hash = destino
-      const secao = document.getElementById(destino)
+      const secao = document.getElementById(destino.slice(1))
       if (!secao) return
       const tabindexAnterior = secao.getAttribute('tabindex')
       secao.setAttribute('tabindex', '-1')
@@ -58,10 +57,6 @@ export function MenuPrincipal({ aoFechar, textos, idioma }: MenuPrincipalProps) 
       }, { once: true })
     }
   }, [abrirContato])
-
-  useEffect(() => {
-    if (fase === 'aberto') botaoFechar.current?.focus({ preventScroll: true })
-  }, [fase])
 
   function fechar(destino?: string) {
     if (fase === 'fechando') return
@@ -76,7 +71,7 @@ export function MenuPrincipal({ aoFechar, textos, idioma }: MenuPrincipalProps) 
     const primeiro = controles[0]
     const ultimo = controles[controles.length - 1]
     if (!primeiro || !ultimo) return
-    if (evento.shiftKey && document.activeElement === primeiro) {
+    if (evento.shiftKey && (document.activeElement === primeiro || document.activeElement === evento.currentTarget)) {
       evento.preventDefault()
       ultimo.focus()
     } else if (!evento.shiftKey && document.activeElement === ultimo) {
@@ -115,9 +110,11 @@ export function MenuPrincipal({ aoFechar, textos, idioma }: MenuPrincipalProps) 
 
       <div className={styles.conteudo} inert={fase !== 'aberto'}>
         <div className={styles.topo}>
-          <LogotipoCriario texto={textos.marca} invertido />
-          <button ref={botaoFechar} className={styles.fechar} type="button" onClick={() => fechar()} aria-label={textos.menu.fecharRotulo}>
-            <span>{textos.menu.fechar}</span><span className={styles.iconeFechar} aria-hidden="true" />
+          <a className={styles.marca} href={caminhoDaPagina(idioma)} aria-label={textos.menu.inicioRotulo}>
+            <img src="/images/logo-criario-footer.png" alt={textos.marca} />
+          </a>
+          <button className={styles.fechar} type="button" onClick={() => fechar()} aria-label={textos.menu.fecharRotulo}>
+            <span className={styles.iconeFechar} aria-hidden="true" />
           </button>
         </div>
 
@@ -125,7 +122,7 @@ export function MenuPrincipal({ aoFechar, textos, idioma }: MenuPrincipalProps) 
           <ol className={styles.lista}>
             {itensDeNavegacao.map(({ numero, id, destino }, ordem) => (
               <li key={destino} className={styles.item} style={{ '--ordem': ordem } as CSSProperties}>
-                <a className={styles.link} href={'#' + destino} aria-haspopup={destino === 'fale-conosco' ? 'dialog' : undefined} onClick={(evento) => { evento.preventDefault(); fechar(destino) }}>
+                <a className={styles.link} href={destinoDeNavegacao(destino, idioma, pagina)} aria-haspopup={destino === 'fale-conosco' ? 'dialog' : undefined} onClick={(evento) => { if (evento.button !== 0 || evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey) return; evento.preventDefault(); fechar(destinoDeNavegacao(destino, idioma, pagina)) }}>
                   <span className={styles.numero} aria-hidden="true">{numero}</span>
                   <span>{textos.navegacao[id]}</span>
                   <span className={styles.seta} aria-hidden="true">↗</span>
@@ -137,8 +134,16 @@ export function MenuPrincipal({ aoFechar, textos, idioma }: MenuPrincipalProps) 
         <div className={styles.assinatura}>
           <span>{textos.menu.assinatura}</span>
           <nav className={styles.idiomas} aria-label={textos.idiomas.rotulo}>
-            <a href="/" hrefLang="pt-BR" lang="pt-BR" aria-current={idioma === 'pt-BR' ? 'page' : undefined}>{textos.idiomas.portugues}</a>
-            <a href="/en/" hrefLang="en" lang="en" aria-current={idioma === 'en' ? 'page' : undefined}>{textos.idiomas.ingles}</a>
+            <span className={styles.iconeIdioma} aria-hidden="true">
+              <svg className={styles.planeta} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
+                <circle cx="12" cy="12" r="10" />
+                <ellipse cx="12" cy="12" rx="4" ry="10" />
+                <path d="M2 12h20M4 6.5h16M4 17.5h16" />
+              </svg>
+              <svg className={styles.chevron} viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2"><path d="m2 2 6 6 6-6" /></svg>
+            </span>
+            <a href={caminhoDaPagina('pt-BR', pagina)} hrefLang="pt-BR" lang="pt-BR" aria-label={textos.idiomas.portugues} aria-current={idioma === 'pt-BR' ? 'page' : undefined}>PT</a>
+            <a href={caminhoDaPagina('en', pagina)} hrefLang="en" lang="en" aria-label={textos.idiomas.ingles} aria-current={idioma === 'en' ? 'page' : undefined}>EN</a>
           </nav>
         </div>
       </div>
